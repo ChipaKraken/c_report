@@ -8,13 +8,8 @@ body {
 	width: 100%;
 	background: #f3f2f3;
 	color: #000000;
-	/*font-family: Helvetica_Light-Normal; 
-    src: url(Helvetica_Light-Normal.ttf);*/
-	/*font-family: Calibri Light;*/
-	font-family: 'Open Sans', sans-serif;
-	src: url(/CalibriL.ttf);
+	font-family: 'Noto Sans', sans-serif;
 	margin:0px;
-	-webkit-font-smoothing: subpixel-antialiased !important;
 }
 
 #container {
@@ -31,11 +26,12 @@ td {
 	border: 1px solid black;
 }
 #header {
-	font-family: Helvetica_Light-Normal; 
-    src: url(Helvetica_Light-Normal.ttf), local(Helvetica_Light-Normal);
-	background: #2d2d2d;
+	/*font-family: Helvetica_Light-Normal; 
+    src: url(Helvetica_Light-Normal.ttf), local(Helvetica_Light-Normal);*/
+	/*background: #2d2d2d;*/
+	background: radial-gradient(circle at 1px 1px, #2d2d2d, #5f5f5f);
 	color: #FFFFFF;
-	font-size: 26pt;
+	font-size: 20pt;
 	height: 5%;
 	width: auto;
 }
@@ -44,7 +40,7 @@ td {
 /*	font-family: Lane - Narrow;
 	src: url(LANENAR_.ttf);*/
 	color: #b60000;
-	margin-left: 50px;
+	margin-left: 30px;
 	margin-top: 100px;
 }
 
@@ -71,16 +67,16 @@ td {
 	height: 10%;
 	/*border: 2px solid #00d3d5;*/
 	border: 2px solid #9E0922;
-	-webkit-box-shadow: 0px 3px 8px 0px rgba(50, 50, 50, 1);
+	/*-webkit-box-shadow: 0px 3px 8px 0px rgba(50, 50, 50, 1);
 	-moz-box-shadow:    0px 3px 8px 0px rgba(50, 50, 50, 1);
-	box-shadow:         0px 3px 8px 0px rgba(50, 50, 50, 1);
+	box-shadow:         0px 3px 8px 0px rgba(50, 50, 50, 1);*/
 }
 
 #feedForm {
 	position: relative;
-	line-height: 110%;
+	line-height: 150%;
 	height: 80%;
-	padding-left: 30px;
+	padding-left: 0px;
 	padding-right: 20px;
 	overflow-y: scroll;
 	background: #f6f6f6;
@@ -136,15 +132,15 @@ td {
 	width: 100%;
 }
 .h2 {
-	font-weight: 700;
-	font-size: 14pt;
+	font-weight: normal;
+	font-size: 12pt;
 }
 
 h1 {
 	font-size: 26pt;
 }
 h2 {
-	font-size: 15pt;
+	font-size: 8pt;
 }
 h3 {
 	font-size: 14pt;
@@ -153,8 +149,22 @@ h3 {
 .newsItem {
 	padding-top: 0px;
 	padding-bottom: 5px;
+	padding-left: 30px;
 	border-bottom: 2px solid;
    	border-bottom-width:1px;
-
    	border-bottom-color: #c1c1c1;
+}
+
+.titleContainer {
+	background-color: #727272;
+	font-size: 12pt;
+	height: 25px;
+	color: #FFFFFF;
+	padding-top: 5px;
+	padding-left: 30px;
+}
+.titleTime {
+	float: right;
+	font-style: normal;
+	padding-right: 8px;
 }
