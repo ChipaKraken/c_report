@@ -1,15 +1,15 @@
 var form = document.createElement("form");
 var tab = document.createElement("table");
 tab.setAttribute("border","1");
-for(var key in myPlaylist)
+for(var key in myPlace)
 {
 	var tr = document.createElement("tr");
 	var myField = document.createElement("input");
-	myField.setAttribute("name", myPlaylist[key]['title']);
-	myField.setAttribute("value", myPlaylist[key]['lonlat']);
+	myField.setAttribute("name", myPlace[key]['title']);
+	myField.setAttribute("value", myPlace[key]['lonlat']);
 
 	var myP= document.createElement("span");
-	myP.innerHTML = myPlaylist[key]['title'];
+	myP.innerHTML = myPlace[key]['title'];
 
 	var td1= document.createElement("td");
 	var td2= document.createElement("td");
