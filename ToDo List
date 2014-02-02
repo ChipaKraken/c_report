@@ -1,0 +1,14 @@
+AUCA Crime Report Project.
+Bishkek, Kyrgysztan, 2014
+
+Requirements:
+
+Make simple crime report web-service with ability to provide statistics about crimes.
+
+ToDo:
+
+1)Think about logic of our web-site
+2) start working on main page
+3) create database for our webservice
+4) connect main page with database, think about logic.
+5) eshe chto-nibud', poka ne pridumal
