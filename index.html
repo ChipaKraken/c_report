@@ -6,6 +6,9 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
     <link rel="stylesheet" href="leaflet.css" />
   	<link rel="stylesheet" href="CalibriL" type='text/css'>
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript" src="apprise-v2.js"></script>
+	<link rel="stylesheet" href="apprise-v2.css" type="text/css">
   	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
     <script src="leaflet.js"></script>
 </head>
@@ -24,7 +27,8 @@
                       		<div id="submitForm">
                       			<div class="wrapper">
                       				<div class="cell">
-                      				<input class="textbox"type="text" placeholder="Сообщить"></div>
+									<button class="button chunky" id="custom-tryit">СООБЩИТЬ!</button>
+                      				<!---<input class="textbox"type="text" placeholder="Сообщить">--></div>
                       			</div>
                       		</div>
 
@@ -118,4 +122,29 @@
                         </div>
             </div>
 </body>
+
+
+<script>
+$(function() {
+
+	$('#custom-tryit').on("click", function() {
+
+		var $response = $('custom-response');
+
+		var options = {
+			buttons: {
+				confirm: { text: 'Сообщить', className: 'blue', action: function(e) {
+					$('#custom-response').html('You clicked the "Okie" button! You said: "' + e.input + '"');
+					console.log(e);
+					Apprise('close');
+					}
+				},
+			},
+			input: true
+		};
+
+		Apprise('Введите информацию о проишествии', options);
+	});
+});
+</script>
 </html>
