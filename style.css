@@ -3,7 +3,6 @@ html {
 	width: 100%;
 }
 body {
-	position: fixed;
 	height: 100%;
 	width: 100%;
 	background: #f3f2f3;
@@ -12,28 +11,17 @@ body {
 	margin:0px;
 }
 
-#container {
-	position: absolute;
-	background: #FFFFFF;
-	left: 0px;
-	top: 0px; 
-	height: 100%;
-	width: 100%;
-	/*border: 2px solid;*/
-}
-
-td {
-	border: 1px solid black;
-}
 #header {
-	/*font-family: Helvetica_Light-Normal; 
-    src: url(Helvetica_Light-Normal.ttf), local(Helvetica_Light-Normal);*/
-	/*background: #2d2d2d;*/
+	z-index: 2;
+	position: relative;
+	float: top;
+	border-bottom: 2px solid white;
+	box-shadow: 0px 0px 5px black;
 	background: radial-gradient(circle at 1px 1px, #2d2d2d, #5f5f5f);
 	color: #FFFFFF;
 	font-size: 20pt;
 	height: 5%;
-	width: auto;
+	width: 100%;
 }
 
 .header {
@@ -42,53 +30,106 @@ td {
 	color: #b60000;
 	margin-left: 30px;
 	margin-top: 100px;
+	/*text-shadow: 0px 0px 1px black, 
+		0px 0px 1px black, 
+		0px 0px 8px white, 
+		0px 0px 8px white;*/
 }
 
-#navigation {
-	background: #a2a2a2;
-	width: auto;
-	height: 20px;
+@-moz-keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@-webkit-keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+.blink {
+	-webkit-animation-name: blinker;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+
+    -moz-animation-name: blinker;
+    -moz-animation-duration: 2s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: infinite;
+
+    animation-name: blinker;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+#currentTime {
+	position: relative;
+	height: 100%;
+	float: right;
+	font-size: 20pt;
+	padding-right: 10px;
+	padding-left: 10px;
+	border-left: 2px solid white;
+	background: #ff8a00;
+	/*background: #00933f;*/
+}
+#settings {
+	float: right; 
+	margin-right: 5px;
+	margin-top: 2px;
 }
 
 #feed {
-	box-shadow: -5px 0px 10px -10px #000000;
+	/*border-right: 2px solid white;*/
+	z-index: 2;
+	position: absolute;
 	position: relative;
 	font-size: 10pt;
 	background: #f6f6f6;
-	float: left;
 	width: 25%;
-	top: 0px;
-	height: 95%;
-	box-shadow: 0 0 15px rgba(0,0,0,0.5);
+	height: 94%;
+	float: left;
+	box-shadow: 0px 5px 10px black;
 }
 #submitForm {
-	background: #2d2d2d;
+	position: relative;
+	/*background: #2d2d2d;*/
+	background: #727272;
 	width: auto;
 	height: 10%;
-	/*border: 2px solid #00d3d5;*/
-	border: 2px solid #9E0922;
-	/*-webkit-box-shadow: 0px 3px 8px 0px rgba(50, 50, 50, 1);
-	-moz-box-shadow:    0px 3px 8px 0px rgba(50, 50, 50, 1);
-	box-shadow:         0px 3px 8px 0px rgba(50, 50, 50, 1);*/
+	border-right: 2px solid white;
+	border-bottom: 2px solid white;
 }
-
+#feedFormSettings {
+	color: #FFFFFF;
+	z-index: 1;
+	height: 5%;
+	background: #909090;
+	box-shadow: -1px 0px 2px black, -1px 0px 2px black;
+}
 #feedForm {
+	z-index: -1;
 	position: relative;
 	line-height: 150%;
 	height: 80%;
-	padding-left: 0px;
 	padding-right: 20px;
 	overflow-y: scroll;
 	background: #f6f6f6;
-	border-right: 2px solid #7a7a7a;
+	/*border-right: 2px solid #7a7a7a;*/
 }
 
 #map {
-	position: relative;
-	float: right;
 	background: #d2d0d2;
-	width: 75%;
-	height: 95%;
+	width: auto;
+	height: 94%;
 }
 
 #footer {
@@ -101,23 +142,22 @@ td {
 	height: 30px;
 }
 #searchWrapper {
-	border-top: 2px solid #7a7a7a;
-	border-right: 2px solid #7a7a7a;
-	height: 9%;
-	padding-bottom: -1px;
+	box-shadow: -1px -1px 1px black;
+	background: #727272;
+	height: 5%;
 }
 .textbox { 
-	border-style: none;
 	position: relative;
-	background-color : #666666; 
+	background-color: #909090;
+	border-style: none;
 	color: #FFFFFF;
 	height: 45%; 
 	width: 80%; 
 } 
-.textbox:focus { 
-    outline: none;    
+.textbox:focus {    
 	height: 45%; 
 	width: 80%;
+	border-style: none;
 }
 .wrapper {
 	display: table; 
@@ -144,12 +184,16 @@ h2 {
 }
 h3 {
 	font-size: 14pt;
-
 }
+.whiteText {
+	color: #FFFFFF;
+}
+
 .newsItem {
+	/*text-align:justify;*/
 	padding-top: 0px;
 	padding-bottom: 5px;
-	padding-left: 30px;
+	margin-left: 30px;
 	border-bottom: 2px solid;
    	border-bottom-width:1px;
    	border-bottom-color: #c1c1c1;
@@ -157,14 +201,68 @@ h3 {
 
 .titleContainer {
 	background-color: #727272;
-	font-size: 12pt;
-	height: 25px;
+	/*background: #838B83*/	
+	font-size: 11pt;
+	height: 22px;
 	color: #FFFFFF;
-	padding-top: 5px;
+	padding-top: 0px;
+	padding-bottom: 0px;
 	padding-left: 30px;
 }
 .titleTime {
+	background: #ff8a00;
 	float: right;
+	height: 100%;
 	font-style: normal;
 	padding-right: 8px;
+
+	padding-left: 8px;
+}
+button {
+	-moz-box-shadow:inset 0px 0px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 0px 0px 0px #ffffff;
+	box-shadow:inset 0px 0px 0px 0px #ffffff;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #4cc3ff), color-stop(1, #29b1f5) );
+	background:-moz-linear-gradient( center top, #4cc3ff 5%, #29b1f5 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#4cc3ff', endColorstr='#29b1f5');
+	background-color:#4cc3ff;
+	-webkit-border-top-left-radius:0px;
+	-moz-border-radius-topleft:0px;
+	border-top-left-radius:0px;
+	-webkit-border-top-right-radius:0px;
+	-moz-border-radius-topright:0px;
+	border-top-right-radius:0px;
+	-webkit-border-bottom-right-radius:0px;
+	-moz-border-radius-bottomright:0px;
+	border-bottom-right-radius:0px;
+	-webkit-border-bottom-left-radius:0px;
+	-moz-border-radius-bottomleft:0px;
+	border-bottom-left-radius:0px;
+	text-indent:0px;
+	border:2px solid #ffffff;
+	display:inline-block;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:22px;
+	font-weight:bold;
+	font-style:normal;
+	height:40px;
+	line-height:30px;
+	width:150px;
+	text-decoration:none;
+	text-align:center;
+	margin-top: 15px;
+	font-family: 'Noto Sans', sans-serif;
+	font-weight: 100;
+	font-size: 14pt;
+	text-align: center;
+}
+button:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #29b1f5), color-stop(1, #4cc3ff) );
+	background:-moz-linear-gradient( center top, #29b1f5 5%, #4cc3ff 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#29b1f5', endColorstr='#4cc3ff');
+	background-color:#29b1f5;
+} button:active {
+	position:relative;
+	top:1px;
 }
