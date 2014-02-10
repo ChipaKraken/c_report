@@ -5,146 +5,42 @@
     <link href='http://fonts.googleapis.com/css?family=Noto+Sans&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="style.css" />
     <link rel="stylesheet" href="leaflet.css" />
-  	<link rel="stylesheet" href="CalibriL" type='text/css'>
-	<script type="text/javascript" src="jquery.min.js"></script>
-	<script type="text/javascript" src="apprise-v2.js"></script>
-	<link rel="stylesheet" href="apprise-v2.css" type="text/css">
-  	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
     <script src="leaflet.js"></script>
 </head>
  
-<body>
- 
-            <div id="container">
-                        <div id="header">
-                        	<span class="header">Crime</span>Report Bishkek
-                    	</div>
-                    	<div id="map">
-                        <script src="kraken_map.js"></script>
-                      </div>
+<body onload = "startTime()">
+            <div id="header">
+                <span class="header">Crime<span class="whiteText">Report Bishkek</span></span>
+                  <div id="currentTime">
+                    <span id="hour"></span><span class="blink">:</span><span id="min"></span>
+                  </div>
+                  <div id="settings">
+                    <img src="images/Settings.png" alt="Settings" width="35" height="35"/>
+                  </div>
 
-                    	<div id="feed">
-                      		<div id="submitForm">
-                      			<div class="wrapper">
-                      				<div class="cell">
-									<button class="button chunky" id="custom-tryit">СООБЩИТЬ!</button>
-                      				<!---<input class="textbox"type="text" placeholder="Сообщить">--></div>
-                      			</div>
-                      		</div>
+            </div>
+           
+            <div id="feed">
+          		<div id="submitForm">
+          			<center><button type="button">Сообщить!</button></center>
+          		</div>
+              <div id="feedFormSettings">
+                <center>Category</center>
+              </div>
+          		<div id="feedForm">
+              </div>
+              <div id="searchWrapper">
+                Search
+              </div>
 
-                      		<div id="feedForm">
-                          <br>
+          	</div>
+            
+            <div id="map">
+              <script src="kraken_map.js"></script>
+            </div>
 
-                            <div class="titleContainer">Кража телефона
-                              <div class="titleTime">22:00</div>
-                            </div>
-                            <div class="newsItem">
-                              
-                             
-                              <br>
-                              Работаю в супермаркете “Народный”. Сегодня примерно в 17:00 трое неизвестных лиц в масках ворвались в магазин, чтобы вынести оттуда наличные из кассы. Двое следили за охранниками, третий доставал деньги из кассы. 
-                              Скрылись на автомобиле марки Subaru, 
-                              гос. номер B 1111 A.
-                              <br><br>ул. Правды/ул. Киевская
-                              20 Янв 2014, 17:00
-                            </div>
-                            <br>
+	           <div id="clear">
 
-                            <div class="titleContainer">Разбойное ограбление
-                              <div class="titleTime">21:00</div>
-                            </div>
-                            <div class="newsItem">
-                              <br>
-                              Работаю в супермаркете “Народный”. Сегодня примерно в 17:00 трое неизвестных лиц в масках ворвались в магазин, чтобы вынести оттуда наличные из кассы. Двое следили за охранниками, третий доставал деньги из кассы. 
-                              Скрылись на автомобиле марки Subaru, 
-                              гос. номер B 1111 A.
-                              <br><br>пр. Чуй, 150
-                              20 Янв 2014, 17:00
-                            </div> <br>
-
-                            <div class="titleContainer">Убийство
-                              <div class="titleTime">20:30</div>
-                            </div>
-                            <div class="newsItem">
-                              <br>
-                              Работаю в супермаркете “Народный”. Сегодня примерно в 17:00 трое неизвестных лиц в масках ворвались в магазин, чтобы вынести оттуда наличные из кассы. Двое следили за охранниками, третий доставал деньги из кассы. 
-                              Скрылись на автомобиле марки Subaru, 
-                              гос. номер B 1111 A.
-                              <br><br>ул. Правды/ул. Киевская
-                              20 Янв 2014, 17:00
-                            </div> <br>
-
-                            <div class="titleContainer">Кража телефона
-                              <div class="titleTime">20:20</div>
-                            </div>
-                            <div class="newsItem">
-                              <br>
-                              Работаю в супермаркете “Народный”. Сегодня примерно в 17:00 трое неизвестных лиц в масках ворвались в магазин, чтобы вынести оттуда наличные из кассы. Двое следили за охранниками, третий доставал деньги из кассы. 
-                              Скрылись на автомобиле марки Subaru, 
-                              гос. номер B 1111 A.
-                              <br><br>ул. Правды/ул. Киевская
-                              20 Янв 2014, 17:00
-                            </div><br>
-
-                            <div class="titleContainer">Кража телефона
-                              <div class="titleTime">19:00</div>
-                            </div>
-                      		  <div class="newsItem">
-                              <br>
-                              Работаю в супермаркете “Народный”. Сегодня примерно в 17:00 трое неизвестных лиц в масках ворвались в магазин, чтобы вынести оттуда наличные из кассы. Двое следили за охранниками, третий доставал деньги из кассы. 
-                              Скрылись на автомобиле марки Subaru, 
-                              гос. номер B 1111 A.
-                              <br><br>ул. Правды/ул. Киевская
-                              20 Янв 2014, 17:00
-                            </div><br>
-
-                            <div class="titleContainer">Кража телефона
-                              <div class="titleTime">18:50</div>
-                            </div>
-                            <div class="newsItem">
-                              <br>
-                              Работаю в супермаркете “Народный”. Сегодня примерно в 17:00 трое неизвестных лиц в масках ворвались в магазин, чтобы вынести оттуда наличные из кассы. Двое следили за охранниками, третий доставал деньги из кассы. 
-                              Скрылись на автомобиле марки Subaru, 
-                              гос. номер B 1111 A.
-                              <br><br>ул. Правды/ул. Киевская
-                              20 Янв 2014, 17:00
-                            </div>
-                          </div>
-                          <div id="searchWrapper">
-                            OLOLO
-                          </div>
-                      	</div>
-                        
- 						
-
-                        <div id="clear">
- 
-                        </div>
             </div>
 </body>
-
-
-<script>
-$(function() {
-
-	$('#custom-tryit').on("click", function() {
-
-		var $response = $('custom-response');
-
-		var options = {
-			buttons: {
-				confirm: { text: 'Сообщить', className: 'blue', action: function(e) {
-					$('#custom-response').html('You clicked the "Okie" button! You said: "' + e.input + '"');
-					console.log(e);
-					Apprise('close');
-					}
-				},
-			},
-			input: true
-		};
-
-		Apprise('Введите информацию о проишествии', options);
-	});
-});
-</script>
 </html>
