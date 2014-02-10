@@ -6,6 +6,10 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
     <link rel="stylesheet" href="leaflet.css" />
     <script src="leaflet.js"></script>
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script src="vex.combined.min.js"></script>
+	<link rel="stylesheet" href="vex.css" />
+	<link rel="stylesheet" href="vex-theme-flat-attack.css" />
 </head>
  
 <body onload = "startTime()">
@@ -22,7 +26,7 @@
            
             <div id="feed">
           		<div id="submitForm">
-          			<center><button type="button">Сообщить!</button></center>
+          			<center><button type="button" id="report">Сообщить!</button></center>
           		</div>
               <div id="feedFormSettings">
                 <center>Category</center>
@@ -43,4 +47,30 @@
 
             </div>
 </body>
+
+<script>
+
+	$('#report').on("click", function() {
+		vex.defaultOptions.className = 'vex-theme-flat-attack';
+		vex.dialog.buttons.YES.text = "Сообщить!";
+		vex.dialog.buttons.NO.text = "Отмена";
+		var todayDateString;
+
+		todayDateString = new Date().toJSON().slice(0, 10);
+
+		vex.dialog.open({
+		  message: 'Пожалуйста, опишите преступление',
+		  input: "<style>\n    .vex-custom-field-wrapper {\n        margin: 1em 0;\n    }\n    .vex-custom-field-wrapper > label {\n        display: inline-block;\n        margin-bottom: .2em;\n    }\n</style>\n <div class=\"vex-custom-field-wrapper\">\n    <label for=\"category\">Категория</label>\n <div class=\"vex-custom-input-wrapper\">\n <input name=\"category\" type=\"text\" placeholder=\"Категория\" required />\n <div class=\"vex-custom-field-wrapper\">\n    <label for=\"address\">Адрес</label>\n <div class=\"vex-custom-input-wrapper\">\n <input name=\"address\" type=\"text\" placeholder=\"Адрес\" required />\n <div class=\"vex-custom-field-wrapper\">\n    <label for=\"comment\">Комментарий</label>\n <div class=\"vex-custom-input-wrapper\">\n <input name=\"comment\" type=\"text\" placeholder=\"Комментарий\" required /> <div class=\"vex-custom-field-wrapper\">\n    <label for=\"date\">Дата</label>\n    <div class=\"vex-custom-input-wrapper\">\n        <input name=\"date\" type=\"date\" value=\"" + todayDateString + "\" />\n  </div>\n</div>",
+		  callback: function(data) {
+			if (data === false) {
+			  return console.log('Cancelled');
+			}
+			console.log('Date', data.date);
+			return $('.demo-result-custom-vex-dialog').show().html("<h4>Result</h4>\n<p>\n    Date: <b>" + data.date + "</b><br/>\n");
+		  }
+		});
+	
+	});
+
+</script>
 </html>
