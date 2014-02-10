@@ -5,12 +5,12 @@ Requirements:
 
 Make simple crime report web-service with ability to provide statistics about crimes.
 
-ToDo:
+Plan:
 
-1)Think about logic of our web-site
-2) start working on main page
-3) create database for our webservice
-4) connect main page with database, think about logic.
-5) eshe chto-nibud', poka ne pridumal
+1) Create Diagram - Logic of website
+2) Start working on main page. About us will be added later
+3) Create database for our web-service
+4) Connect main page to database, think about logic, how it will work.
+5) Add some features to make our web-site more user-friendly.
 6) ...
 7) PROFIT
