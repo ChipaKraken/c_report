@@ -17,3 +17,9 @@ Plan:
 5) Add some features to make our web-site more user-friendly.
 6) ...
 7) PROFIT
+
+
+suggestions after DEMO1
+1) submit validity
+2) voting option
+3) news hover and map highlight option
