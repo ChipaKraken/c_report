@@ -88,4 +88,4 @@ Labor division:
 - **Zufar & Ilia:* DB design, DB implementation, back end
 - **Chyngyz:* map module
 - **Timur:* submit form implementation
-- **Halil:* search implementation, tags
+- **Halil:* search implementation, tags, sorting
