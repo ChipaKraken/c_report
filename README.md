@@ -1,8 +1,7 @@
-c_report
-========
-
 AUCA Crime Report Project.
 Bishkek, Kyrgyzstan, 2014
+==========================
+
 
 Overview:
 ---------
@@ -85,7 +84,7 @@ Not doing list:
 Labor division:
 ----------------
 *2/26/14*
-- **Zufar & Ilia:* DB design, DB implementation, back end
-- **Chyngyz:* map module
-- **Timur:* submit form implementation
-- **Halil:* search implementation, tags, sorting
+- Zufar & Ilia: DB design, DB implementation, back end
+- Chyngyz: map module
+- Timur: submit form implementation
+- Halil: search implementation, tags, sorting
