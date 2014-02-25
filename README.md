@@ -2,14 +2,13 @@ c_report
 ========
 
 AUCA Crime Report Project.
-Bishkek, Kyrgysztan, 2014
--------------------------
+Bishkek, Kyrgyzstan, 2014
 
-**Overview:*
+Overview:
 ---------
 CrimeReport website project is aimed to give users an ability to report illegal, insulting or illegitimate actions whether they are done toward them or if they became a witness.
 
-**Functional Requirements:*
+Functional Requirements:
 -----------------------
 1)	Main page layout divided into two interactive sections – map and news feed.
 
@@ -40,35 +39,30 @@ CrimeReport website project is aimed to give users an ability to report illegal,
 7)	Search engine optimization (SEO)
 -	Gist implementation.
 
-**Feature list:*
+Feature list:
 --------------
 
 *News Feed module:*
------------------
-•	Sorting news
-•	Real time search
-•	Mapping by category
+- Sorting news
+- Real time search
+- Mapping by category
 *Submit module:*
------------------
-•	Choose date from dropdown calendar
+- Choose date from dropdown calendar
 *Map module:*
---------------
-•	Adjustable time period
-•	Mapping by category
-•	Zoom-in
-•	Zoom-out
+- Adjustable time period
+- Mapping by category
+- Zoom-in
+- Zoom-out
 *News Pop Up:*
--------------
-•	Comment
-•	Rate
-•	Report similar crime right from Pop Up
+- Comment
+- Rate
+- Report similar crime right from Pop Up
 
 
 
-**User stories:*
+User stories:
 ---------------
 *As a user* 
---------------
 - I would like to report a crime so that I can report a crime that happened to me
 - I would like to search/sort news so that I can find a crime that is interesting for me
 - I would like to read news so that I can read what happened recently
@@ -77,27 +71,21 @@ CrimeReport website project is aimed to give users an ability to report illegal,
 - I would like to rate news or comment so that I can highlight what I liked
 
 *As a moderator* 
---------------
 - I would like to be able to delete comments or news so that I can delete spam from website
 
 *As a site administrator* 
----------------
 - I would like to dump information from map module so that I can make statics later
 
 
-**Not doing list:*
+Not doing list:
 ----------------
 - Log in module
 - Separate page for news feed/map/submit form 
 
-**Labor division:*
+Labor division:
 ----------------
 *2/26/14*
-**Zufar & Ilia:* DB design, DB implementation, back end
---------------------------------------------------------
-**Chyngyz:* map module
---------------------------
-**Timur:* submit form implementation 
---------------------------------------
-**Halil:* search implementation, tags
----------------------------------------
+- **Zufar & Ilia:* DB design, DB implementation, back end
+- **Chyngyz:* map module
+- **Timur:* submit form implementation
+- **Halil:* search implementation, tags
