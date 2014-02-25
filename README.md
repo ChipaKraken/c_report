@@ -3,11 +3,14 @@ c_report
 
 AUCA Crime Report Project.
 Bishkek, Kyrgysztan, 2014
+-------------------------
 
-Overview:
+**Overview:*
+---------
 CrimeReport website project is aimed to give users an ability to report illegal, insulting or illegitimate actions whether they are done toward them or if they became a witness.
 
-Functional Requirements:
+**Functional Requirements:*
+-----------------------
 1)	Main page layout divided into two interactive sections – map and news feed.
 
 2)	Interactive map module should be the main element in interface for observing the criminal situation and submitting the crime
@@ -36,49 +39,65 @@ Functional Requirements:
 -	Search module should be live – the result should instantly appear in news feed field on the main page.
 7)	Search engine optimization (SEO)
 -	Gist implementation.
-Feature list:
 
-News Feed module:
+**Feature list:*
+--------------
+
+*News Feed module:*
+-----------------
 •	Sorting news
 •	Real time search
 •	Mapping by category
-Submit module:
+*Submit module:*
+-----------------
 •	Choose date from dropdown calendar
-Map module:
+*Map module:*
+--------------
 •	Adjustable time period
 •	Mapping by category
 •	Zoom-in
 •	Zoom-out
-News Pop Up:
+*News Pop Up:*
+-------------
 •	Comment
 •	Rate
 •	Report similar crime right from Pop Up
 
 
 
-User stories:
-As a user 
-•	I would like to report a crime so that I can report a crime that happened to me
-•	I would like to search/sort news so that I can find a crime that is interesting for me
-•	I would like to read news so that I can read what happened recently
-•	I would like to comment news so that I can add some information about the crime
-•	I would like to interact with map so that I can see where crimes happened
-•	I would like to rate news or comment so that I can highlight what I liked
+**User stories:*
+---------------
+*As a user* 
+--------------
+- I would like to report a crime so that I can report a crime that happened to me
+- I would like to search/sort news so that I can find a crime that is interesting for me
+- I would like to read news so that I can read what happened recently
+- I would like to comment news so that I can add some information about the crime
+- I would like to interact with map so that I can see where crimes happened
+- I would like to rate news or comment so that I can highlight what I liked
 
-As a moderator 
-•	I would like to be able to delete comments or news so that I can delete spam from website
+*As a moderator* 
+--------------
+- I would like to be able to delete comments or news so that I can delete spam from website
 
-As a site admin 
-•	I would like to dump information from map module so that I can make statics later
+*As a site administrator* 
+---------------
+- I would like to dump information from map module so that I can make statics later
 
 
-Not doing list:
-1.	Log in module
-2.	Separate page for news feed/map/submit form 
+**Not doing list:*
+----------------
+- Log in module
+- Separate page for news feed/map/submit form 
 
-Labor division:
-2/26/14
-Zufar & Ilia: DB design, DB implementation, back end
-Chyngyz: map module
-Timur: submit form implementation 
-Halil: search implementation, tags
+**Labor division:*
+----------------
+*2/26/14*
+**Zufar & Ilia:* DB design, DB implementation, back end
+--------------------------------------------------------
+**Chyngyz:* map module
+--------------------------
+**Timur:* submit form implementation 
+--------------------------------------
+**Halil:* search implementation, tags
+---------------------------------------
