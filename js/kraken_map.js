@@ -1,11 +1,11 @@
-/*var map = L.map('map').setView([42.87093, 74.60335], 13);
+var map = L.map('map').setView([42.87093, 74.60335], 13);
 var count = 1;
-L.tileLayer('http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png', {
+L.tileLayer('http://{s}.tile.cloudmade.com/3a5a93b0788845f59038e598884ecdad/92017/256/{z}/{x}/{y}.png', {
 	maxZoom: 18,
-	attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>'
-}).addTo(map);*/
+	attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery В© <a href="http://cloudmade.com">CloudMade</a>'
+}).addTo(map);
 
-var cloudmadeUrl = 'http://{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.jpg';
+/*var cloudmadeUrl = 'http://{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.jpg';
 var subDomains = ['otile1','otile2','otile3','otile4'];
 var cloudmadeAttrib = 'Data, imagery and map information provided by <a href="http://open.mapquest.co.uk" target="_blank">MapQuest</a>, <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC-BY-SA</a>';
 var cloudmade = new L.TileLayer(cloudmadeUrl, {maxZoom: 18, attribution: cloudmadeAttrib, subdomains: subDomains});
@@ -13,7 +13,7 @@ var cloudmade = new L.TileLayer(cloudmadeUrl, {maxZoom: 18, attribution: cloudma
 var bishkek = new L.LatLng(42.87093, 74.60335);
 
 var map = new L.Map('map', {center: bishkek, zoom: 13, layers : [cloudmade]});
-
+*/
 var myMarkers = new Array();
 
 marker = L.marker([42.87593, 74.60135]).addTo(map)
@@ -113,14 +113,14 @@ function onMapClick(e)
 	/*	if (count === 1)
 		{
 			marker = new L.marker(e.latlng, {id:1}).addTo(map)
-				.bindPopup("<b>Это произошло</b><br />здесь.").openPopup();
+				.bindPopup("<b>Р­С‚Рѕ РїСЂРѕРёР·РѕС€Р»Рѕ</b><br />Р·РґРµСЃСЊ.").openPopup();
 			count+=1;
 		} 
 		else
 		{*/
 			var newLatLng = new L.LatLng(lat, lng);
 			marker.setLatLng(newLatLng).addTo(map)
-				.bindPopup("<b>Choose</b><br />placse on map.<br><button type=\"button\" id=\"report\" onclick=\"submit()\">Сообщить!</button>").openPopup();
+				.bindPopup("<b>Choose</b><br />placse on map.<br><button type=\"button\" id=\"report\" onclick=\"submit()\">РЎРѕРѕР±С‰РёС‚СЊ!</button>").openPopup();
 		//};
 		//myMarkers .push(marker);
 	};
@@ -129,16 +129,16 @@ function onMapClick(e)
 function submit ()
 {
 	vex.defaultOptions.className = 'vex-theme-flat-attack';
-	vex.dialog.buttons.YES.text = "Сообщить!";
-	vex.dialog.buttons.NO.text = "Отмена";
+	vex.dialog.buttons.YES.text = "РЎРѕРѕР±С‰РёС‚СЊ!";
+	vex.dialog.buttons.NO.text = "РћС‚РјРµРЅР°";
 	var todayDateString;
 
 	todayDateString = new Date().toJSON().slice(0, 10);
 
 	vex.dialog.open(
 	{
-		message: 'Пожалуйста, опишите преступление',
-		input: "<style>\n    .vex-custom-field-wrapper {\n        margin: 1em 0;\n    }\n    .vex-custom-field-wrapper > label {\n        display: inline-block;\n        margin-bottom: .2em;\n    }\n</style>\n <div class=\"vex-custom-field-wrapper\">\n    <label for=\"category\">Категория</label>\n <div class=\"vex-custom-input-wrapper\">\n <input name=\"category\" type=\"text\" placeholder=\"Категория\" required />\n <div class=\"vex-custom-field-wrapper\">\n    <label for=\"address\">Адрес</label>\n <div class=\"vex-custom-input-wrapper\">\n <input name=\"address\" type=\"text\" placeholder=\"Адрес\" required />\n <div class=\"vex-custom-field-wrapper\">\n    <label for=\"comment\">Комментарий</label>\n <div class=\"vex-custom-input-wrapper\">\n <input name=\"comment\" type=\"text\" placeholder=\"Комментарий\" required /> <div class=\"vex-custom-field-wrapper\">\n    <label for=\"date\">Дата</label>\n    <div class=\"vex-custom-input-wrapper\">\n        <input name=\"date\" type=\"date\" value=\"" + todayDateString + "\" />\n  </div>\n</div>",
+		message: 'РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РѕРїРёС€РёС‚Рµ РїСЂРµСЃС‚СѓРїР»РµРЅРёРµ',
+		input: "<style>\n    .vex-custom-field-wrapper {\n        margin: 1em 0;\n    }\n    .vex-custom-field-wrapper > label {\n        display: inline-block;\n        margin-bottom: .2em;\n    }\n</style>\n <div class=\"vex-custom-field-wrapper\">\n    <label for=\"category\">РљР°С‚РµРіРѕСЂРёСЏ</label>\n <div class=\"vex-custom-input-wrapper\">\n <input name=\"category\" type=\"text\" placeholder=\"РљР°С‚РµРіРѕСЂРёСЏ\" required />\n <div class=\"vex-custom-field-wrapper\">\n    <label for=\"address\">РђРґСЂРµСЃ</label>\n <div class=\"vex-custom-input-wrapper\">\n <input name=\"address\" type=\"text\" placeholder=\"РђРґСЂРµСЃ\" required />\n <div class=\"vex-custom-field-wrapper\">\n    <label for=\"comment\">РљРѕРјРјРµРЅС‚Р°СЂРёР№</label>\n <div class=\"vex-custom-input-wrapper\">\n <input name=\"comment\" type=\"text\" placeholder=\"РљРѕРјРјРµРЅС‚Р°СЂРёР№\" required /> <div class=\"vex-custom-field-wrapper\">\n    <label for=\"date\">Р”Р°С‚Р°</label>\n    <div class=\"vex-custom-input-wrapper\">\n        <input name=\"date\" type=\"date\" value=\"" + todayDateString + "\" />\n  </div>\n</div>",
 		callback: function(data)
 		{
 			if (data === false) 
