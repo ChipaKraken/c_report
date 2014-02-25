@@ -47,13 +47,18 @@ Feature list:
 - Sorting news
 - Real time search
 - Mapping by category
+
 *Submit module:*
+
 - Choose date from dropdown calendar
+
 *Map module:*
+
 - Adjustable time period
 - Mapping by category
 - Zoom-in
 - Zoom-out
+
 *News Pop Up:*
 - Comment
 - Rate
