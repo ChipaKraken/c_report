@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `comments`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `comments` (
-  `comment_id` int(11) NOT NULL DEFAULT '0',
+  `comment_id` int(11) NOT NULL AUTO_INCREMENT,
   `crime_id` int(11) DEFAULT NULL,
   `commentor_name` varchar(20) DEFAULT NULL,
   `comment` varchar(1000) DEFAULT NULL,
@@ -50,7 +50,7 @@ DROP TABLE IF EXISTS `crimes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `crimes` (
-  `crime_id` int(11) NOT NULL DEFAULT '0',
+  `crime_id` int(11) NOT NULL AUTO_INCREMENT,
   `description` varchar(1000) DEFAULT NULL,
   `category` varchar(50) DEFAULT NULL,
   `date` date DEFAULT NULL,
@@ -80,4 +80,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-03-16 12:56:00
+-- Dump completed on 2014-03-17 10:22:10
