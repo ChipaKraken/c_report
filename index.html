@@ -3,13 +3,19 @@
   <title>Crime report</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <link href='http://fonts.googleapis.com/css?family=Noto+Sans&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" type="text/css" href="css/style.css" />
-  <link rel="stylesheet" href="css/leaflet.css" />
-  <script src="js/leaflet.js"></script>
-  <script type="text/javascript" src="js/jquery.min.js"></script>
-  <link href="bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="View/css/style.css" />
+  <link rel="stylesheet" href="View/css/leaflet.css" />
+  <script src="View/js/leaflet.js"></script>
+  <script type="text/javascript" src="View/js/jquery.min.js"></script>
+  <link href="View/bootstrap/bootstrap.min.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-  <script src="bootstrap/bootstrap.min.js"></script>
+  <script src="View/bootstrap/bootstrap.min.js"></script>
+
+
+  <link rel="stylesheet" type="text/css" media="all" href="View/submit form/css/style.css">
+  <link rel="stylesheet" type="text/css" media="all" href="View/submit form/fancybox/jquery.fancybox.css">
+  <script type="text/javascript" src="View/submit form/fancybox/jquery.fancybox.js?v=2.0.6"></script>
+
 </head>
  
 <body onload = "startTime()">
@@ -26,7 +32,7 @@
            
             <div id="feed">
               <div id="submitForm">
-                <center><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#firstModal">Сообщить!</button></center>
+                <center><a href="#inline"><button type="button" class="btn btn-primary btn-lg">Сообщить!</button></a></center>
               </div>
               <div id="feedFormSettings">
                 <center>Category</center>
@@ -40,74 +46,50 @@
             </div>
             
             <div id="map">
-              <script src="js/kraken_map.js"></script>
+              <script src="View/js/kraken_map.js"></script>
             </div>
 
              <div id="clear">
 
             </div>
-<!-- myModal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Submit Crime</h4>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-          <label for="description">Description</label>
-          <textarea class="form-control" id="description" rows="3"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="category">Category</label>
-          <select class="form-control" id="category">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="date">Date</label>
-          <input type="date" class="form-control" id="date" placeholder="Date">
-        </div>
-        <div class="form-group">
-          <label for="time">Time</label>
-          <input type="time" class="form-control" id="time" placeholder="Time">
-        </div>
-        <div class="form-group">
-          <label for="police">Police???</label>
-          <select class="form-control" id="police">
-            <option>Yes</option>
-            <option>No</option>
-          </select>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary" id="report">Save changes</button>
-      </div>
-    </div>
-  </div>
+<input type="hidden" name="longitude">
+<input type="hidden" name="latitude">
+
+<div id="inline">
+  <h2>Форма заявления</h2>
+
+  <form>
+    <label for="msg">Описание</label>
+    <textarea id="msg" name="msg" class="txtarea"></textarea>
+      <br>
+    <label for "date">Дата:</label>
+    <input type = "date" id="dp1" class="text1" >
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <label for "time">Время:</label>
+    <input type="time" id="time" class="text1" >
+    <br>
+    <label for="crmtype">Тип происшествия:</label>
+    <select id="crmtype">
+      <option>Кража/Угон</option>
+      <option>Убийство</option>
+      <option>Похищение</option>
+      <option>Мошенничество</option>
+      <option>Вымогательство</option>
+    </select>
+    <label for="police">Тип происшествия:</label>
+    <select id="police">
+      <option value="0">Кража/Угон</option>
+      <option value="1">Убийство</option>
+    </select>
+    <br>
+    <br>
+    
+    
+    <button id="send">Отправить форму</button>
+  </form>
 </div>
-<!-- firstModal -->
-<div class="modal fade bs-example-modal-sm" tabindex="-1" id="firstModal" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" onclick="_start()">Continue</button>
-      </div>
-    </div>
-  </div>
-</div>
+<script src="View/submit form/js/bootstrap-datepicker.js"></script>
+
 <script>
   function _start (argument) {
   $('#firstModal').modal('hide')
@@ -119,6 +101,26 @@
   marker = new L.marker([42.87593, 74.60135], {id:1}).addTo(map).bindPopup(
     "<b>Choose</b><br />placse on map.<br><button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#myModal\">Сообщить!</button>").openPopup();
   myMarkers.push(marker);
+}
+function post_aka_submit (argument) {
+  var constroler = "Controller/input_controller.php";
+  var description = document.getElementById("description");
+  var category = document.getElementById("category");
+  var date = document.getElementById("date");
+  var time = document.getElementById("time");
+  var police = document.getElementById("police");
+  var longitude = document.getElementById("longitude");
+  var latitude = document.getElementById("latitude");
+
+  $.post( constroler, {
+    "description" : description, 
+    "category" : category, 
+    "date" : date, 
+    "time" : time, 
+    "police_report" : police_report, 
+    "longitude" : longitude, 
+    "latitude" : latitude
+  } );
 }
 </script>
 </body>
