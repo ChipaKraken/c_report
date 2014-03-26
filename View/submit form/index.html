@@ -117,9 +117,9 @@
 			
 			
 		if(mailvalid == true && msglen >= 4 && namelen >=1 && addrlen >=1) {
-				$("#send").replaceWith("<em>sending...</em>");
+				$("#send").replaceWith("<em>Отправляется...</em>");
 					$("#contact").fadeOut("fast", function(){
-								$(this).before("<p><strong>Success! Your feedback has been sent, thanks :)</strong></p>");
+								$(this).before("<p><strong>Ваше сообщение отправлено. Спасибо!</strong></p>");
 								setTimeout("$.fancybox.close()", 1000);
 							});
 
