@@ -14,6 +14,12 @@
 			$crime_id = $_POST['crime_id'];
 			$comment -> getNewsComments($crime_id);
 		}
+		else if (isset($_POST['rating']) && $_POST != "") {
+			$comment = new Comment();
+			$comment_id = $_POST['comment_id'];
+			$value = $_POST['ratingValue'];
+		 	$comment -> changeRating($comment_id, $value);
+		}
 		
 	}
 ?>
