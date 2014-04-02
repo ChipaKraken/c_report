@@ -32,7 +32,8 @@
            
             <div id="feed">
               <div id="submitForm">
-                <center><a href="#inline"><button type="button" class="btn btn-primary btn-lg">Сообщить!</button></a></center>
+                <center><a href="#inline"><button type="button" class="btn btn-primary btn-lg">Сsssообщить!</button></a></center>
+				<p><a class="modalbox" href="#inline">click to open</a></p>
               </div>
               <div id="feedFormSettings">
                 <center>Category</center>
@@ -58,39 +59,62 @@
 <div id="inline">
   <h2>Форма заявления</h2>
 
-  <form>
-    <label for="msg">Описание</label>
-    <textarea id="msg" name="msg" class="txtarea"></textarea>
-      <br>
-    <label for "date">Дата:</label>
-    <input type = "date" id="dp1" class="text1" >
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    <label for "time">Время:</label>
-    <input type="time" id="time" class="text1" >
-    <br>
-    <label for="crmtype">Тип происшествия:</label>
-    <select id="crmtype">
-      <option>Кража/Угон</option>
-      <option>Убийство</option>
-      <option>Похищение</option>
-      <option>Мошенничество</option>
-      <option>Вымогательство</option>
-    </select>
-    <label for="police">Обращались ли вы в полицию?</label>
-    <select id="police">
-      <option value="0">Нет</option>
-      <option value="1">Да</option>
-    </select>
-    <br>
-    <br>
-    
-    
-    <button id="send">Отправить форму</button>
-  </form>
+<div id="inline">
+	<h2>Форма заявления</h2>
+
+	<form id="contact" name="contact" action="#" method="post">
+		<label for="email">Ваш e-mail:</label>
+		<input type="email" id="email" name="email" class="txt">
+		<br>
+		<label for="name">Ваше имя:</label>
+		<input type="name" id="name" name="name" class="txt">
+		<br>
+		<label for="addr">Место происшествия:</label>
+		<input type="addr" id="addr" name="addr" class="txt">
+		<br>
+		<label for "date">Дата:</label>
+		<input type = "date" id="dp1" class="text1" >
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<label for "time">Время:</label>
+		<input type="time" id="time" class="text1" >
+		<br>
+		<br>
+		<label for="crmtype">Тип происшествия:</label>
+		<select id="crmtype">
+			<option value="1">Кража/Угон</option>
+			<option value="2">Убийство</option>
+			<option value="3">Похищение</option>
+			<option value="3">Мошенничество</option>
+			<option value="3">Вымогательство</option>
+		</select>
+		<br>
+		<br>
+		<label for="police">Обращались ли вы в полицию?</label>
+		<select id="police">
+			<option value="1">Да</option>
+			<option value="2">Нет</option>
+		</select>
+		<br>
+		<br>
+		<label for="msg">Описание</label>
+		<textarea id="msg" name="msg" class="txtarea"></textarea>
+		
+		
+		<button id="send">Отправить форму</button>
+	</form>
 </div>
+
+
+<script src="js/bootstrap-datepicker.js"></script>
+<!-- basic fancybox setup -->
+<script type="text/javascript">
+		
+		v
+</script>
 <script src="View/submit form/js/bootstrap-datepicker.js"></script>
 
 <script>
+
   function _start (argument) {
   $('#firstModal').modal('hide')
   for (var i = 0; i < myMarkers.length; i++)
@@ -99,7 +123,7 @@
   };
   click_cheker = 1;
   marker = new L.marker([42.87593, 74.60135], {id:1}).addTo(map).bindPopup(
-    "<b>Choose</b><br />placse on map.<br><button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#myModal\">Сообщить!</button>").openPopup();
+    "<b>Choose</b><br />placse on map.<br><button type=\"button\" class=\"modalbox\" data-toggle=\"modal\" data-target=\"#inline\">Сообщить!</button>").openPopup();
   myMarkers.push(marker);
 }
 function post_aka_submit (argument) {
@@ -122,6 +146,70 @@ function post_aka_submit (argument) {
     "latitude" : latitude
   } );
 }
+
+var e = document.getElementById("crmtype");
+		var crmtypesel = e.options[e.selectedIndex].text;
+		
+		
+		
+		function validateEmail(email) 
+		{ 
+			var reg = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+			return reg.test(email);
+		}
+		$(document).ready(function() {
+		$(".modalbox").fancybox();
+		$("#contact").submit(function() { return false; });
+		
+		
+		$("#send").on("click", function(){
+			var emailval  = $("#email").val();
+			var msgval    = $("#msg").val();
+			var msglen    = msgval.length;
+			var mailvalid = validateEmail(emailval);
+			var nameval = $("#name").val();
+			var namelen = nameval.length;
+			var addrlen = ($("#addr").val()).length;
+			
+			if(mailvalid == false) {
+				$("#email").addClass("error");
+			}
+			else if(mailvalid == true){
+				$("#email").removeClass("error");
+			}
+			
+			if(msglen < 4) {
+				$("#msg").addClass("error");
+			}
+			else if(msglen >= 4){
+				$("#msg").removeClass("error");
+			}
+			
+			if(namelen < 1) {
+				$("#name").addClass("error");
+			}
+			else if(namelen >= 1){
+				$("#name").removeClass("error");
+			}
+			
+			if(addrlen < 1) {
+				$("#addr").addClass("error");
+			}
+			else if(addrlen >= 1){
+				$("#addr").removeClass("error");
+			}
+			
+			
+		if(mailvalid == true && msglen >= 4 && namelen >=1 && addrlen >=1) {
+				$("#send").replaceWith("<em>sending...</em>");
+					$("#contact").fadeOut("fast", function(){
+								$(this).before("<p><strong>Success! Your feedback has been sent, thanks :)</strong></p>");
+								setTimeout("$.fancybox.close()", 1000);
+							});
+
+			}
+		});
+	});
 </script>
 </body>
 </html>
