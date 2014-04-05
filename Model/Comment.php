@@ -51,6 +51,7 @@ class Comment {
             $this -> db -> query($q);
         }
     }
+    function test(){}
 
 }
 
