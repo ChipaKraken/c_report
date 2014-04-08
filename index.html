@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Crime Report by ChipaKraken</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>Crime Report</h1>
+        <p>&quot;Crime Report&quot; AUCA Project</p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/ChipaKraken/c_report" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/ChipaKraken/c_report/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/ChipaKraken/c_report/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <h1>
+<a name="auca-crime-report-project" class="anchor" href="#auca-crime-report-project"><span class="octicon octicon-link"></span></a>AUCA Crime Report Project.</h1>
+
+<p>Bishkek, Kyrgyzstan, 2014</p>
+
+<h2>
+<a name="overview" class="anchor" href="#overview"><span class="octicon octicon-link"></span></a>Overview:</h2>
+
+<p>CrimeReport website project is aimed to give users an ability to report illegal, insulting or illegitimate actions whether they are done toward them or if they became a witness.</p>
+
+<h2>
+<a name="functional-requirements" class="anchor" href="#functional-requirements"><span class="octicon octicon-link"></span></a>Functional Requirements:</h2>
+
+<p>1)  Main page layout divided into two interactive sections – map and news feed.</p>
+
+<p>2)  Interactive map module should be the main element in interface for observing the criminal situation and submitting the crime</p>
+
+<ul>
+<li>  User should be able to see crimes reported by other users all placed at once for the whole picture</li>
+<li>  User should be able to fully interact with map: zoom, zoom out, navigate, and mark a place for a new report (by clicking on map).</li>
+</ul><p>3)  News feed module should be placed left to the map module and should be automatically updated with last and/or important reports.</p>
+
+<ul>
+<li>  Every news should have time and place.</li>
+<li>  Every news should be an active element and be clickable to view the report pop-up page.</li>
+<li>  The user should be able to sort news by time or category.</li>
+<li>  Whenever the news is hovered the corresponding crime mark on map is highlighted.</li>
+</ul><p>4)  Submit button/section/module. Submit button should be placed above the news feed.</p>
+
+<ul>
+<li>  By clicking submit button the pop-up submit module should appear.</li>
+<li>  The module should have next fields: time, place, type of crime, description.</li>
+<li>  After the user submits the crime the crime should be automatically added to the database and shown on the map.</li>
+<li>  Each submitter should be given a unique link to access his entry.</li>
+</ul><p>5)  Crime page. This page show the particular crime submitted, can be accessed by unique link or from the news feed</p>
+
+<ul>
+<li>  The crime page should be a pop-up with crime description, time, place and comment section.</li>
+<li>  All users should be able to comment the report anonymously.</li>
+<li>  All users should be able to vote “up” or “down” for each crime entry on the crime page.</li>
+</ul><p>6)  Search box is a search module.</p>
+
+<ul>
+<li>  Search should implemented by keywords typed by user.</li>
+<li>  Search module should be live – the result should instantly appear in news feed field on the main page.
+7)  Search engine optimization (SEO)</li>
+<li>  Gist implementation.</li>
+</ul><h2>
+<a name="feature-list" class="anchor" href="#feature-list"><span class="octicon octicon-link"></span></a>Feature list:</h2>
+
+<p><em>News Feed module:</em></p>
+
+<ul>
+<li>Sorting news</li>
+<li>Real time search</li>
+<li>Mapping by category</li>
+</ul><p><em>Submit module:</em></p>
+
+<ul>
+<li>Choose date from dropdown calendar</li>
+</ul><p><em>Map module:</em></p>
+
+<ul>
+<li>Adjustable time period</li>
+<li>Mapping by category</li>
+<li>Zoom-in</li>
+<li>Zoom-out</li>
+</ul><p><em>News Pop Up:</em></p>
+
+<ul>
+<li>Comment</li>
+<li>Rate</li>
+<li>Report similar crime right from Pop Up</li>
+</ul><h2>
+<a name="user-stories" class="anchor" href="#user-stories"><span class="octicon octicon-link"></span></a>User stories:</h2>
+
+<p><em>As a user</em> </p>
+
+<ul>
+<li>I would like to report a crime so that I can report a crime that happened to me</li>
+<li>I would like to search/sort news so that I can find a crime that is interesting for me</li>
+<li>I would like to read news so that I can read what happened recently</li>
+<li>I would like to comment news so that I can add some information about the crime</li>
+<li>I would like to interact with map so that I can see where crimes happened</li>
+<li>I would like to rate news or comment so that I can highlight what I liked</li>
+</ul><p><em>As a moderator</em> </p>
+
+<ul>
+<li>I would like to be able to delete comments or news so that I can delete spam from website</li>
+</ul><p><em>As a site administrator</em> </p>
+
+<ul>
+<li>I would like to dump information from map module so that I can make statics later</li>
+</ul><h2>
+<a name="not-doing-list" class="anchor" href="#not-doing-list"><span class="octicon octicon-link"></span></a>Not doing list:</h2>
+
+<ul>
+<li>Log in module</li>
+<li>Separate page for news feed/map/submit form </li>
+</ul><h2>
+<a name="labor-division" class="anchor" href="#labor-division"><span class="octicon octicon-link"></span></a>Labor division:</h2>
+
+<p><em>2/26/14</em></p>
+
+<ul>
+<li>Zufar &amp; Ilia: DB design, DB implementation, back end</li>
+<li>Chyngyz: map module</li>
+<li>Timur: submit form implementation</li>
+<li>Halil: search implementation, tags, sorting</li>
+</ul>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/ChipaKraken">ChipaKraken</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
