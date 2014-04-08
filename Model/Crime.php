@@ -48,6 +48,12 @@ class Crime {
 		$data = $this -> db ->fetch_all_array($q);
 		print json_encode($data);	
 	}
+	
+	public function fetchById($id) {
+		$q = "SELECT * FROM crimes WHERE crime_id = $id";
+        $data = $this -> db ->fetch_all_array($q);
+        print json_encode($data);
+	}
 
 }
 ?>
