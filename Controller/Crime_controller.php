@@ -13,7 +13,14 @@
 		$crime->insert();
 	}
 	else{
-		$crime = new Crime();
-		$crime -> fetch();
+		if (isset($_GET['crime_id']) && $_POST != "") {
+			$crime = new Crime();
+			$crime_id = $_GET['crime_id'];
+			$crime -> fetchById($crime_id);
+		}
+		else {		
+			$crime = new Crime();
+			$crime -> fetch();
+		}
 	}
 ?>
