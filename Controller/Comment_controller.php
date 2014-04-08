@@ -1,10 +1,10 @@
 <?php	
 
 	include("../Model/Comment.php");
-	if (isset($_GET['comment']) && $_POST != "") {
-		$comment = $_GET['comment'];
-		$commentor_name = $_GET['commentor_name'];
-		$crime_id= $_GET['crime_id'];
+	if (isset($_POST['comment']) && $_POST != "") {
+		$comment = $_POST['comment'];
+		$commentor_name = $_POST['commentor_name'];
+		$crime_id= $_POST['crime_id'];
 		$comment = Comment::create($crime_id, $commentor_name, $comment);
 		$comment->add();
 	}
