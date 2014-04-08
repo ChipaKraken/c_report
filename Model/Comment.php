@@ -8,19 +8,19 @@ class Comment {
     private $crime_id;
     private $commentor_name;
     private $comment;
-    private $rating;
+    // private $rating;
 
     function __construct() {
         $this -> db = new Database();
     }
     
-    function create($crime_id, $commentor_name, $comment, $rating) {    
-        $comment = new Comment();
-        $comment -> crime_id = $crime_id;
-        $comment -> commentor_name = $commentor_name;
-        $comment -> comment = $comment;
-        $comment -> rating = $rating;
-        return $comment;
+    function create($crime_id, $commentor_name, $comment) {    
+        $comment_new = new Comment();
+        $comment_new  -> crime_id = $crime_id;
+        $comment_new  -> commentor_name = $commentor_name;
+        $comment_new  -> comment = $comment;
+        // $comment -> rating = 0;
+        return $comment_new ;
     }
 
     function add() {
@@ -28,8 +28,8 @@ class Comment {
         $crime_id = $this -> crime_id;
         $commentor_name = $this -> commentor_name;
         $comment = $this -> comment;
-        $rating = 0;
-        $q = "INSERT INTO comments (crime_id, commentor_name, comment, rating) VALUES ('$crime_id', '$commentor_name', '$comment', '$rating')";
+        // $rating = $this -> rating;
+        $q = "INSERT INTO comments (crime_id, commentor_name, comment) VALUES ('$crime_id', '$commentor_name', '$comment')";
         $this -> db -> query($q);
     }
 
@@ -40,18 +40,17 @@ class Comment {
         print json_encode($data);
     }
 
-    function changeRating($id, $value) {
+    // function changeRating($id, $value) {
 
-        if($value == 0) {
-            $q = "UPDATE comments SET rating = rating + 1 WHERE comment_id = %id";
-            $this -> db -> query($q);
-        }
-        else {
-            $q = "UPDATE comments SET rating = rating - 1 WHERE comment_id = %id";
-            $this -> db -> query($q);
-        }
-    }
-    function test(){}
+        // if($value == 0) {
+            // $q = "UPDATE comments SET rating = rating + 1 WHERE comment_id = %id";
+            // $this -> db -> query($q);
+        // }
+        // else {
+            // $q = "UPDATE comments SET rating = rating - 1 WHERE comment_id = %id";
+            // $this -> db -> query($q);
+        // }
+    // }
 
 }
 
