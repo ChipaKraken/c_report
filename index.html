@@ -1,54 +1,53 @@
+
+<!DOCTYPE html>
 <html>
 <head>
-<title>Crime report</title>
+  <title>Crime report</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <link rel="stylesheet" type="text/css" href="css/style2.css" />
-  <link rel="stylesheet" href="css/leaflet.css" />
-  <script src="js/leaflet.js"></script>
-  <script type="text/javascript" src="js/jquery.min.js"></script>
-  <link href="bootstrap/bootstrap.min.css" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-  <script src="bootstrap/bootstrap.min.js"></script>
-  <script src="js/handlebars-v1.3.0.js"></script>
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="View/css/style2.css" />
+  <link rel="stylesheet" href="View/css/leaflet.css" />
+  <link href="View/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <!-- JS -->
+  <script src="View/js/leaflet.js"></script>
+  <script type="text/javascript" src="View/js/jquery.min.js"></script>
+  <script src="View/bootstrap/bootstrap.min.js"></script>
+  <script src="View/js/handlebars-v1.3.0.js"></script>
 </head>
- 
 <body>
-            <div id="header">
-                <div class="headerText">CrimeReport Bishkek</div>
-            </div>
-           
-            <div id="feed">
-              <div id="submitForm">
-                <center><button type="button" class="submitButton" data-toggle="modal" data-target="#firstModal">РЎРѕРѕР±С‰РёС‚СЊ</button></center>
-              </div>
-              <div id="feedFormSettings">
-                <center>Category</center>
-              </div>
-              <div id="feedForm">
-              </div>
-              <div id="searchWrapper">
-                Search
-              </div>
+  <div id="header">
+    <div class="headerText">CrimeReport Bishkek</div>
+  </div>
 
-            </div>
-            
-            <div id="map">
-              <script src="js/kraken_map.js"></script>
-            </div>
+  <input type="hidden" id="longitude" value="">
+  <input type="hidden" id="latitude" value="">
 
-             <div id="clear">
+  <div id="feed">
+    <div id="submitForm">
+      <button type="button" class="submitButton" data-toggle="modal" data-target="#firstModal">Сообщить</button>
+    </div>
+    <div id="feedFormSettings">
+      <center>Category</center>
+    </div>
+    <div id="feedForm">
+      <!-- news go here -->
+    </div>
+    <div id="searchWrapper">Search</div>
+  </div>
 
-            </div>
-<input type="hidden" id="longitude" value="">
-<input type="hidden" id="latitude" value="">
-<!-- myModal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Submit Crime</h4>
-      </div>
+  <div id="map"></div>
+  <div id="com_helper"></div>
+
+  <!-- Helpers go here-->
+
+  <!-- myModal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Submit Crime</h4>
+        </div>
       <div class="modal-body">
         <div class="form-group">
           <label for="description">Description</label>
@@ -86,130 +85,18 @@
       </div>
     </div>
   </div>
-</div>
-<!-- firstModal -->
-<div class="modal fade bs-example-modal-sm" tabindex="-1" id="firstModal" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РЅР°Р¶РјРёС‚Рµ РїСЂРѕРґРѕР»Р¶РёС‚СЊ Рё РІС‹Р±РµСЂРёС‚Рµ РјРµСЃС‚Рѕ РЅР° РєР°СЂС‚Рµ, РіРґРµ РїСЂРѕРёР·РѕС€Р»Рѕ СЃРѕР±С‹С‚РёРµ. РџРѕСЃР»Рµ РЅР°Р¶РјРёС‚Рµ РєРЅРѕРїРєСѓ СЃРѕРѕР±С‰РёС‚СЊ Рё РІРІРµРґРёС‚Рµ РїРѕРґСЂРѕР±РЅРѕРµ РѕРїРёСЃР°РЅРёРµ РїСЂРѕРёС€РµСЃС‚РІРёСЏ.
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" onclick="_start()">Continue</button>
+  </div>
+  <!-- firstModal -->
+  <div class="modal fade bs-example-modal-sm" tabindex="-1" id="firstModal" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        Пожалуйста, нажмите продолжить и выберите место на карте, где произошло событие. После нажмите кнопку сообщить и введите подробное описание проишествия.
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" onclick="_start()">Continue</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<script>
-  function _start (argument) {
-  $('#firstModal').modal('hide')
-  for (var i = 0; i < myMarkers.length; i++)
-  {
-    map.removeLayer(myMarkers[i])
-  };
-  click_cheker = 1;
-  marker = new L.marker([42.87593, 74.60135], {id:1}).addTo(map).bindPopup(
-    "<b>Choose</b><br />placse on map.<br><button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#myModal\">РЎРѕРѕР±С‰РёС‚СЊ!</button>").openPopup();
-  myMarkers.push(marker);
-}
-function post_aka_submit (argument) {
-  var constroler = "Controller/Crime_controller.php";
-  var description = document.getElementById("description").value;
-  var category = document.getElementById("category").value;
-  var date = document.getElementById("date").value;
-  var time = document.getElementById("time").value;
-  var police = document.getElementById("police").value;
-  var longitude = document.getElementById("longitude").value;
-  var latitude = document.getElementById("latitude").value;
-
-  $.post( constroler, {
-    "description" : description, 
-    "category" : category, 
-    "date" : date, 
-    "time" : time, 
-    "police_report" : police, 
-    "longitude" : longitude, 
-    "latitude" : latitude
-  } )
-$('#myModal').modal('hide');
-setTimeout(function() {
-	update_news();
-	click_cheker
-    }, 1000);
-}
-function comment_submit () {
-  var constroler = "Controller/Comment_controller.php";
-  var comment = $("#message").val();
-  var commentor_name = $("#name").val();
-  var crime_id = $("#crid").html()
-
-  $.post( constroler, {
-    "comment" : comment, 
-    "commentor_name" : commentor_name, 
-    "crime_id" : crime_id
-  } );
-  $('#Post').modal('hide')
-  comma(crime_id);
-}
-</script>
-<div id="com_helper"></div>
-<!-- Modal -->
-<script type="text/x-handlebars" id="post">
-<div class="modal" id="Post" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="crid">{{id}}</h4>
-      </div>
-      <div class="modal-body">
-        <h2>{{title}}</h2>
-        <p>{{post}}</p>
-        <span>{{date}} {{time}}</span>
-
-        {{#comments}}
-            <hr />
-          <b>{{commentor_name}}: </b><p>{{comment}}</p>
-        {{/comments}}
-		
-		<hr />
-		<div class="form-group">
-	<label class="sr-only" for="exampleInputEmail2">Name</label>
-	<input type="text" class="form-control" id="name" placeholder="Name">
-</div>
-<div class="form-group">
-	<label class="sr-only" for="exampleInputPassword2">Comment</label>
-	<input type="text" class="form-control" id="message" placeholder="Comment">
-</div>
-
-<button type="button" class="btn btn-info" onclick="comment_submit()">Comment</button>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-</script>
-<script>
-var source = $("#post").html();
-var template = Handlebars.compile(source);
-function comma(id){
-        var crime_url = "Controller/Crime_controller?crime_id=" + id;
-        var com_url = "Controller/Comment_controller.php?crime_id=" + id;
-        var crime = JSON.parse(httpGet(crime_url));
-        var com = JSON.parse(httpGet(com_url));
-		
-        var data = { 
-		  "id": id,
-		  "title": crime[0].category,
-		  "post": crime[0].description,
-		  "date": crime[0].date,
-		  "time": crime[0].time,
-		  "comments": com
-		};
-        $('#com_helper').html(template(data));
-		$('#Post').modal('show');
-}
-</script>
+  <script src="View/js/kraken_map.js"></script>
 </body>
 </html>
