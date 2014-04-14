@@ -23,6 +23,7 @@ body {
 	background: #34353a;
 	color: #FFFFFF;
 	font-size: 16pt;
+	min-height: 50px;
 	height: 50px;
 	width: 100%;
 }
@@ -31,14 +32,14 @@ body {
 	font-family: 'Roboto', sans-serif;
 	font-weight: 300; 
 	color: #FFFFFF;
-	padding-top: 1.2%;
-	margin-left: 130px;
+	padding-top: 20px;
+	margin-left: 100px;
 }
 .headerImage {
 	float: left;
 	position: absolute;
-	margin-top: 0.8%;
-	margin-left: 5px;
+	margin-top: 10px;
+	margin-left: -15px;
 }
 @-moz-keyframes blinker {  
     0% { opacity: 1.0; }
@@ -74,16 +75,7 @@ body {
     animation-timing-function: linear;
     animation-iteration-count: infinite;
 }
-#currentTime {
-	position: absolute;
-	height: 100%;
-	font-size: 20pt;
-	padding-right: 10px;
-	padding-left: 10px;
-	border-left: 0px;
-	background: #ff8a00;
-	/*background: #00933f;*/
-}
+
 #settings {
 	float: right; 
 	margin-right: 5px;
@@ -97,6 +89,7 @@ body {
 	position: relative;
 	font-size: 10pt;
 	background: #f6f6f6;
+	min-width: 320px;
 	width: 25%;
 	height: 94%;
 	float: left;
@@ -107,8 +100,7 @@ body {
 	/*background: #2d2d2d;*/
 	width: auto;
 	height: 10%;
-	border-bottom: 1px solid;
-	border-color: #dedede;
+	min-height: 50px;
 }
 .submitButton {
 	font-family: 'Roboto', sans-serif;
@@ -118,7 +110,10 @@ body {
 	border: 0px;
 	width: 100%;
 	height: 100%;
+	min-height: 60px;
 	font-size: 16pt;
+	border-bottom: 1px solid;
+	border-color: #dedede;
 }
 .submitButton:hover {
 	color: #000;
