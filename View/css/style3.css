@@ -1,0 +1,305 @@
+html {
+	height: 100%;
+	width: 100%;
+}
+
+
+body {
+	height: 100%;
+	width: 100%;
+	background: #f3f2f3;
+	color: #000000;
+	margin:0px;
+	overflow: hidden;
+}
+
+#header {
+	z-index: 2;
+	float: top;
+	border-bottom: 0px;
+	box-shadow: 0px 0px 5px black;
+	/*background: radial-gradient(circle at 1px 1px, #2d2d2d, #5f5f5f);*/
+	/*background: #266757;*/
+	background: #34353a;
+	color: #FFFFFF;
+	font-size: 16pt;
+	height: 50px;
+	width: 100%;
+}
+
+.headerText {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300; 
+	color: #FFFFFF;
+	padding-top: 1.2%;
+	margin-left: 130px;
+}
+.headerImage {
+	float: left;
+	position: absolute;
+	margin-top: 0.8%;
+	margin-left: 5px;
+}
+@-moz-keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@-webkit-keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+.blink {
+	-webkit-animation-name: blinker;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+
+    -moz-animation-name: blinker;
+    -moz-animation-duration: 2s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: infinite;
+
+    animation-name: blinker;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+#currentTime {
+	position: absolute;
+	height: 100%;
+	font-size: 20pt;
+	padding-right: 10px;
+	padding-left: 10px;
+	border-left: 0px;
+	background: #ff8a00;
+	/*background: #00933f;*/
+}
+#settings {
+	float: right; 
+	margin-right: 5px;
+	margin-top: 2px;
+}
+
+#feed {
+	/*border-right: 2px solid white;*/
+	z-index: 2;
+	position: absolute;
+	position: relative;
+	font-size: 10pt;
+	background: #f6f6f6;
+	width: 25%;
+	height: 94%;
+	float: left;
+	box-shadow: 0px 5px 10px black;
+}
+#submitForm {
+	position: relative;
+	/*background: #2d2d2d;*/
+	width: auto;
+	height: 10%;
+	border-bottom: 1px solid;
+	border-color: #dedede;
+}
+.submitButton {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300; 
+	color: #000;
+	background: #FFF;
+	border: 0px;
+	width: 100%;
+	height: 100%;
+	font-size: 16pt;
+}
+.submitButton:hover {
+	color: #000;
+	background: #d8d8d8;
+	border: 0px;
+}
+.submitButton:active {
+	color: #FFF;
+	background: #ffa200;
+	border: 0px;
+}
+/*.submitButton:hover {
+	color: #f82432;
+	
+	border: 0px;
+}
+.submitButton:active {
+	background: #eaeaea;
+	border: 0px;
+}*/
+.submitButton:focus {
+	outline:0;
+}
+
+#feedFormSettings {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400; 
+	/*color: #FFF;
+	background: #34353a;*/
+	color: #000;
+	background: #FFFFFF;
+	z-index: 1;
+	height: 5%;
+}
+#feedForm {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400; 
+	z-index: -1;
+	position: relative;
+	line-height: 150%;
+	height: 80%;
+	overflow-y: scroll;
+	background: #FFFFFF;
+	/*border-right: 2px solid #7a7a7a;*/
+}
+
+#map {
+	background: #d2d0d2;
+	width: auto;
+	height: 94%;
+}
+
+#footer {
+	position: absolute;
+	background: #2d2d2d;
+	text-align: center;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	height: 30px;
+}
+#searchWrapper {
+	box-shadow: -1px -1px 1px black;
+	background: #FFF;
+	height: 5%;
+}
+.textbox { 
+	position: relative;
+	background-color: #909090;
+	border-style: none;
+	color: #FFFFFF;
+	height: 45%; 
+	width: 80%; 
+} 
+.textbox:focus {    
+	height: 45%; 
+	width: 80%;
+	border-style: none;
+}
+.wrapper {
+	display: table; 
+	height: 100%; 
+	width: 100%;
+}
+.cell {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	height: 10px;
+	width: 100%;
+}
+.h2 {
+	font-weight: normal;
+	font-size: 12pt;
+}
+
+h1 {
+	font-size: 26pt;
+}
+h2 {
+	font-size: 8pt;
+}
+h3 {
+	font-size: 14pt;
+}
+.whiteText {
+	color: #FFFFFF;
+}
+
+.newsItem {
+	padding-bottom: 5px;
+	margin-left: 15px;
+	margin-right: 15px;
+	border-bottom: 2px solid;
+   	border-bottom-width:1px;
+   	border-bottom-color: #c1c1c1;
+}
+
+.titleContainer {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400; 
+	background-color: #cecece;
+	/*background: #838B83*/	
+	font-size: 11pt;
+	height: 22px;
+	color: #000;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 30px;
+}
+.titleTime {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300; 
+	color: #FFF;
+	background: #696969;/*#ffa200;*/
+	/*background: #db5d5a;*/
+	/*background: #f25541;*/
+	/*color: #FFF;*/
+	float: right;
+	height: 100%;
+	font-style: normal;
+	padding-right: 8px;
+
+	padding-left: 8px;
+}
+
+.submitFormButton {
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-right:10px;
+	padding-left:10px;
+	
+	margin-left: 50px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300; 
+	color: #000;
+	background: #ffa200; 
+	font-size: 11pt;
+	border: 0px;
+}
+.submitFormButton:focus {
+	outline:0;	
+}
+.submitFormCancelButton {
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-right:10px;
+	padding-left:10px;
+	
+	margin-left: 20%;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300; 
+	color: #000;
+	background: #cecece; 
+	font-size: 11pt;
+	border: 0px;
+}
+.submitFormCancelButton:focus {
+	outline:0;	
+}
+.textarea { 
+	margin-left: 10px;
+}
+
