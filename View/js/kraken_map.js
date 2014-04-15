@@ -100,6 +100,8 @@ function update_news() {
 	        myMarkers.push(marker)
 	        $('#feedForm').append(news(i));
 			}
+			$('.newsItem').click(function(a) {
+			comma(a.toElement.id)});
 	});
 }
 update_news();

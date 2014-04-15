@@ -237,6 +237,29 @@ h3 {
    	border-bottom-color: #c1c1c1;
 }
 
+.newsItem:hover {
+	padding-bottom: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+	border-bottom: 2px solid;
+   	border-bottom-width:1px;
+   	border-bottom-color: #c1c1c1;
+	color: #000;
+	background: #d8d8d8;
+	cursor: pointer;
+}
+.newsItem:active {
+	padding-bottom: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+	border-bottom: 2px solid;
+   	border-bottom-width:1px;
+   	border-bottom-color: #ffa200;
+	color: #FFF;
+	background: #ffa200;
+	cursor: pointer;
+}
+
 .titleContainer {
 	font-family: 'Roboto', sans-serif;
 	font-weight: 400; 
