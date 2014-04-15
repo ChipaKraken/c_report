@@ -1,25 +1,27 @@
-
 <!DOCTYPE html>
 <html>
 <head>
   <title>Crime report</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- CSS -->
-  <link rel="stylesheet" type="text/css" href="View/css/style3.css" />
-  <link rel="stylesheet" href="View/css/leaflet.css" />
-  <link href="View/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,300&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="css/style3.css" />
+  <link rel="stylesheet" href="css/leaflet.css" />
+  <link href="bootstrap/bootstrap.min.css" rel="stylesheet">
   <!-- JS -->
-  <script src="View/js/leaflet.js"></script>
-  <script type="text/javascript" src="View/js/jquery.min.js"></script>
-  <script src="View/bootstrap/bootstrap.min.js"></script>
-  <script src="View/js/handlebars-v1.3.0.js"></script>
+  <script src="js/leaflet.js"></script>
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script src="bootstrap/bootstrap.min.js"></script>
+  <script src="js/handlebars-v1.3.0.js"></script>
+  <script src="js/moment.js"></script>
 </head>
 <body>
   <div id="header">
     <div class="headerImage"> 
-			<a href="http://212.112.98.181:22080/~ilia/kraken/"> <img src="images/city4.png" width="110px" height="auto"></a>
-		</div>
-		<div class="headerText">CrimeReport Bishkek</div>
+      <a href="http://212.112.98.181:22080/~ilia/kraken/"> <img src="images/city4.png" width="110px" height="auto"></a>
+    </div>
+    <div class="headerText">CrimeReport Bishkek</div>
   </div>
 
   <input type="hidden" id="longitude" value="">
@@ -27,15 +29,18 @@
 
   <div id="feed">
     <div id="submitForm">
-      <button type="button" class="submitButton" data-toggle="modal" data-target="#firstModal">Сообщить</button>
+      <button type="button" class="submitButton" id="submitButton">Сообщить</button>
     </div>
     <div id="feedFormSettings">
-      <center>Category</center>
+      показывать: кражи 
+  сортировать по: времени добавления
     </div>
     <div id="feedForm">
       <!-- news go here -->
     </div>
-    <div id="searchWrapper">Search</div>
+      <div id="searchWrapper">
+      Bazinga!!!
+    </div>
   </div>
 
   <div id="map"></div>
@@ -100,6 +105,13 @@
       </div>
     </div>
   </div>
-  <script src="View/js/kraken_map.js"></script>
+  <script src="js/kraken_map.js"></script>
+  <script src="prototype.js"></script>
+        <script>
+            function sendRequest() {
+                new Ajax.Updater('show_results', 'search.php', { method: 'post', parameters: $('searchform').serialize() });
+            }
+         
+    </script>
 </body>
 </html>
