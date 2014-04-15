@@ -117,7 +117,7 @@ body {
 }
 .submitButton:hover {
 	color: #000;
-	background: #d8d8d8;
+	background: #f0f0f0;
 	border: 0px;
 }
 .submitButton:active {
@@ -234,7 +234,30 @@ h3 {
 	padding-right: 15px;
 	border-bottom: 2px solid;
    	border-bottom-width:1px;
-   	border-bottom-color: #c1c1c1;
+   	border-bottom-color: #dedede;
+}
+
+.newsItem:hover {
+	padding-bottom: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+	border-bottom: 2px solid;
+   	border-bottom-width:1px;
+   	border-bottom-color: #f0f0f0;
+	color: #000;
+	background: #f0f0f0;
+	cursor: pointer;
+}
+.newsItem:active {
+	padding-bottom: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+	border-bottom: 2px solid;
+   	border-bottom-width:1px;
+   	border-bottom-color: #ffa200;
+	color: #FFF;
+	background: #ffa200;
+	cursor: pointer;
 }
 
 .newsItem:hover {
