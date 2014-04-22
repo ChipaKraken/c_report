@@ -17,21 +17,48 @@
   <script src="js/moment.js"></script>
 </head>
 <body>
+
+<script type="text/javascript">
+  function se () {
+    for (var i = 0; i < myMarkers.length; i++) {
+        map.removeLayer(myMarkers[i])
+    }
+    $.get('se.php', {
+        searchq: $('#searchbox').val()
+    }, function (data) {
+        jsonArr = JSON.parse(data);
+        $('#feedForm').html('');
+        for (_i = jsonArr.length-1, _len = -1; _i > _len; --_i) {
+            i = jsonArr[_i];
+            console.log(i);
+            temp = i['time'].split(':');
+            i['time'] = temp[0]+':'+temp[1];
+            i['date'] = moment(i['date'], "YYYY-MM-DD").fromNow(); 
+            var temp = i['description'];
+            temp = temp.split(' ');
+            i['category'] = convert_category(i['category']);
+            if (temp.length >= 3) {
+                var popup_message = '<b>' + i['category'] + '</b><br />' + temp[0] + ' ' + temp[1] + ' ' + temp[2] + '<br />' + '<a onclick=comma("' + i['crime_id'] + '")>\u0427\u0438\u0442\u0430\u0442\u044c \u0434\u0430\u043b\u044c\u0448\u0435 \u2192</a>'
+            } else {
+                var popup_message = '<b>' + i['category'] + '</b><br />' + temp[0] + '<br />' + '<a onclick=comma("' + i['crime_id'] + '")>\u0427\u0438\u0442\u0430\u0442\u044c \u0434\u0430\u043b\u044c\u0448\u0435 \u2192</a>'
+            }
+            marker = L.marker([
+                i['latitude'],
+                i['longitude']
+            ]).addTo(map).bindPopup(popup_message);
+            myMarkers.push(marker)
+            $('#feedForm').append(news(i));
+        }
+        $('.newsItem').click(function(a) {
+        comma(a.toElement.id)});            
+    });
+}
+</script>
   <div id="header">
     <div class="headerImage"> 
       <a href="http://212.112.98.181:22080/~ilia/kraken/"> <img src="images/city4.png" width="110px" height="auto"></a>
     </div>
     <div class="headerText">CrimeReport Bishkek</div>
-    <!-- AddThis Follow BEGIN -->
-    <div class="addthis_toolbox addthis_default_style">
-      <b style="float: left;">Мы в соц. сетях:&nbsp;</b>
-      <a class="addthis_button_facebook_follow" addthis:userid="CR"></a>
-      <a class="addthis_button_twitter_follow" addthis:userid="CR"></a>
-      <a class="addthis_button_google_follow" addthis:userid="CR"></a>
-      <a class="addthis_button_instagram_follow" addthis:userid="CR"></a>
-    </div>
-    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-535521f8200c1494"></script>
-    <!-- AddThis Follow END -->
   </div>
 
   <input type="hidden" id="longitude" value="">
@@ -41,87 +68,32 @@
     <div id="submitForm">
       <button type="button" class="submitButton" id="submitButton">Сообщить</button>
     </div>
-    <div id="feedFormSettings">
-      показывать: кражи 
-  сортировать по: времени добавления
+    <div id="feedFormSettings" style="vertical-align: middle;">
+        показывать
+        <select id="category">
+        <option>все</option>
+        <option>кражи</option>
+        <option>убийства</option>
+        <option>вымогательства</option>
+        <option>автоугоны</option>
+        <option>изнасилования</option>
+        </select>
+          <br>
+      <div class="settings_container" style="float: left; border-bottom: 3px solid; border-color: #696969;">Последние</div>
+      <div class="settings_container" style="float: right;">Добавленные</div>
+      
     </div>
     <div id="feedForm">
       <!-- news go here -->
     </div>
       <div id="searchWrapper">
-      Bazinga!!!
+      <form id="searchform" method="post" onsubmit="return false;"><input autocomplete="off" id="searchbox" name="searchq" onkeyup="se()" type="textbox">
+      </form>
     </div>
   </div>
 
   <div id="map"></div>
   <div id="com_helper"></div>
-
-  <!-- Helpers go here-->
-
-  <!-- myModal -->
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="myModalLabel">Submit Crime</h4>
-        </div>
-      <div class="modal-body">
-        <div class="form-group">
-          <label for="description">Description</label>
-          <textarea class="form-control" id="description" rows="3"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="category">Category</label>
-          <select class="form-control" id="category">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="date">Date</label>
-          <input type="date" class="form-control" id="date" placeholder="Date">
-        </div>
-        <div class="form-group">
-          <label for="time">Time</label>
-          <input type="time" class="form-control" id="time" placeholder="Time">
-        </div>
-        <div class="form-group">
-          <label for="police">Police???</label>
-          <select class="form-control" id="police">
-            <option>Yes</option>
-            <option>No</option>
-          </select>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary" onclick="post_aka_submit()">Save changes</button>
-      </div>
-    </div>
-  </div>
-  </div>
-  <!-- firstModal -->
-  <div class="modal fade bs-example-modal-sm" tabindex="-1" id="firstModal" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-        Пожалуйста, нажмите продолжить и выберите место на карте, где произошло событие. После нажмите кнопку сообщить и введите подробное описание проишествия.
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" onclick="_start()">Continue</button>
-        </div>
-      </div>
-    </div>
-  </div>
   <script src="js/kraken_map.js"></script>
-  <script src="prototype.js"></script>
-        <script>
-            function sendRequest() {
-                new Ajax.Updater('show_results', 'search.php', { method: 'post', parameters: $('searchform').serialize() });
-            }
-         
-    </script>
 </body>
 </html>
