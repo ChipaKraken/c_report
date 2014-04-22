@@ -140,6 +140,20 @@
               myMarkers.push(marker)
               $('#feedForm').append(news(i));
           }
+          $('.newsItem')
+          .mouseover(function(a) {
+              var crime_url = "Controller/Crime_controller?crime_id=" + a.toElement.id;
+              var crime = JSON.parse(httpGet(crime_url));
+              var redIcon = new LeafIcon({iconUrl: 'js/images/marker-red.png'});
+              tmpMarker = L.marker([crime[0].latitude, crime[0].longitude], {icon: redIcon}).addTo(map).bindPopup("I am a red leaf.");
+              map.setView(new L.LatLng(crime[0].latitude, crime[0].longitude), 13);
+          })
+          .mouseout(function() {
+              map.removeLayer(tmpMarker);
+          });        
+          $('.newsItem').click(function(a) {
+              comma(a.toElement.id);
+          });
     } else {
       update_news();
     }

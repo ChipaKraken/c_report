@@ -8,6 +8,14 @@ L.tileLayer('map/map/{s}/{z}/{x}/{y}.png', {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery \xa9 <a href="http://cloudmade.com">CloudMade</a>'
 }).addTo(map);
 var myMarkers = new Array;
+var tmpMarker;
+var LeafIcon = L.Icon.extend({
+                options: {
+                    shadowUrl: 'js/images/marker-shadow.png',
+                    iconAnchor:   [12, 41],
+                    popupAnchor:  [-3, -76]
+                }
+            });
 popup = L.popup();
 var click_cheker = 0;
 //compiling templates
@@ -99,9 +107,20 @@ function update_news() {
 	        ]).addTo(map).bindPopup(popup_message);
 	        myMarkers.push(marker)
 	        $('#feedForm').append(news(i));
-			}
-			$('.newsItem').click(function(a) {
-			comma(a.toElement.id)});
+		}
+        $('.newsItem')
+        .mouseover(function(a) {
+            var crime_url = "Controller/Crime_controller?crime_id=" + a.toElement.id;
+            var crime = JSON.parse(httpGet(crime_url));
+            var redIcon = new LeafIcon({iconUrl: 'js/images/marker-red.png'});
+            tmpMarker = L.marker([crime[0].latitude, crime[0].longitude], {icon: redIcon}).addTo(map).bindPopup("I am a red leaf.");
+            map.setView(new L.LatLng(crime[0].latitude, crime[0].longitude), 13);
+        })
+        .mouseout(function() {
+            map.removeLayer(tmpMarker);
+        });  
+		$('.newsItem').click(function(a) {
+		comma(a.toElement.id)});
 	});
 }
 update_news();
