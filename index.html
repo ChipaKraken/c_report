@@ -71,12 +71,12 @@
     <div id="feedFormSettings" style="vertical-align: middle;">
         показывать
         <select id="category">
-        <option>все</option>
-        <option>кражи</option>
-        <option>убийства</option>
-        <option>вымогательства</option>
-        <option>автоугоны</option>
-        <option>изнасилования</option>
+         <option value="0">все</option>
+        <option value="1">кражи</option>
+        <option value="2">убийства</option>
+        <option value="3">вымогательства</option>
+        <option value="4">автоугоны</option>
+        <option value="5">изнасилования</option>
         </select>
           <br>
       <div class="settings_container" style="float: left; border-bottom: 3px solid; border-color: #696969;">Последние</div>
@@ -94,6 +94,47 @@
 
   <div id="map"></div>
   <div id="com_helper"></div>
+
   <script src="js/kraken_map.js"></script>
+  <script>
+
+  // Get references to the objects you need (<select> and <span>)
+  var category = document.getElementById('category');
+
+  // When the list value changes, set the innerHTML of the <span>
+  category.onchange = function() {
+    if (this.value != 0) {
+      var crime_url = "Controller/Crime_controller?category=" + this.value;
+      var crime = JSON.parse(httpGet(crime_url));
+      $('#feedForm').html('');
+      for (var i = 0; i < myMarkers.length; i++) {
+        map.removeLayer(myMarkers[i])
+      }
+      for (_i = crime.length - 1, _len = -1; _i > _len; --_i) {
+              i = crime[_i];
+              temp = i['time'].split(':');
+              i['time'] = temp[0] + ':' + temp[1];
+              i['date'] = moment(i['date'], "YYYY-MM-DD").fromNow();
+              var temp = i['description'];
+              temp = temp.split(' ');
+              i['category'] = convert_category(i['category']);
+              if (temp.length >= 3) {
+                  var popup_message = '<b>' + i['category'] + '</b><br />' + temp[0] + ' ' + temp[1] + ' ' + temp[2] + '<br />' + '<a onclick=comma("' + i['crime_id'] + '")>\u0427\u0438\u0442\u0430\u0442\u044c \u0434\u0430\u043b\u044c\u0448\u0435 \u2192</a>'
+              } else {
+                  var popup_message = '<b>' + i['category'] + '</b><br />' + temp[0] + '<br />' + '<a onclick=comma("' + i['crime_id'] + '")>\u0427\u0438\u0442\u0430\u0442\u044c \u0434\u0430\u043b\u044c\u0448\u0435 \u2192</a>'
+              }
+              marker = L.marker([
+                  i['latitude'],
+                  i['longitude']
+              ]).addTo(map).bindPopup(popup_message);
+              myMarkers.push(marker)
+              $('#feedForm').append(news(i));
+          }
+    } else {
+      update_news();
+    }
+  };
+
+  </script>
 </body>
 </html>
