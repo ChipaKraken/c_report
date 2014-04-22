@@ -18,6 +18,11 @@
 			$crime_id = $_GET['crime_id'];
 			$crime -> fetchById($crime_id);
 		}
+		else if (isset($_GET['category']) && $_POST != "") {
+			$crime = new Crime();
+			$category = $_GET['category'];
+			$crime -> fetchByCategory($category);
+		} 	
 		else {		
 			$crime = new Crime();
 			$crime -> fetch();
