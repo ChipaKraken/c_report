@@ -12,16 +12,16 @@
 		$crime = Crime::create($description, $category, $date, $time, $police_report, $latitude, $longitude);
 		$crime->insert();
 	}
-	else{
+	else {
 		if (isset($_GET['crime_id']) && $_POST != "") {
 			$crime = new Crime();
-			$crime_id = $_GET['crime_id'];
+			$crime_id = (int)$_GET['crime_id'];
 			$crime -> fetchById($crime_id);
 		}
 		else if (isset($_GET['category']) && $_POST != "") {
+			$array = explode(",", $_GET['category']);
 			$crime = new Crime();
-			$category = $_GET['category'];
-			$crime -> fetchByCategory($category);
+			$crime -> fetchByCategory($array);
 		} 	
 		else {		
 			$crime = new Crime();
