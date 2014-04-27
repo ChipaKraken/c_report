@@ -17,6 +17,7 @@
   <script src="js/moment.js"></script>
   <script src="js/vex.combined.min.js"></script>
   <script>vex.defaultOptions.className = 'vex-theme-flat-attack';</script>
+
   <link rel="stylesheet" href="css/vex.css" />
   <link rel="stylesheet" href="css/vex-theme-flat-attack.css" />
 </head>
@@ -60,44 +61,44 @@
 </script>
   <div id="header">
     <div class="headerImage"> 
-      <a href="http://212.112.98.181:22080/~ilia/kraken/"> <img src="images/city4.png" width="110px" height="auto"></a>
+      <a href="http://212.112.98.181:22080/cr/"> <img src="images/city4.png" width="110px" height="auto"></a>
     </div>
     <div class="headerText">CrimeReport Bishkek</div>
-	<div class="contactWrapper">
+    <div class="contactWrapper">
       
       <input type="image" border='0' src='images/contact-us-button.png' name ='contact' width='172' height='25' id='contact'/>
   
-	  </div>
-	  <script>
-		$('#contact').click(function(){
-			vex.dialog.open({
-				message: 'Сообщите нам об ошибке:',
-				input: '' +
-					'<input name="name" type="text" placeholder="Ваше Имя" required />' +
-					'<input name="email" type="text" placeholder="Ваш e-mail" required />' +
-					'<textarea name="message" placeholder="Ваше сообщение" rows="5" required style="color:#444444"></textarea>' +
-				'',
-				buttons: [
-					$.extend({}, vex.dialog.buttons.YES, { text: 'Сообщить' }),
-					$.extend({}, vex.dialog.buttons.NO, { text: 'Отмена' })
-				],
-				callback: function (data) {
-					var constroler = 'Controller/Contact_controller.php';
-					var name = data.name;
-					var email = data.email;
-					var message = data.message;
-					$.post(constroler, {
-						'name': name,
-						'email': email,
-						'message': message
-					});
-				}
-			});
-		});
-	</script>
+    </div>
+    <script>
+    $('#contact').click(function(){
+      vex.dialog.open({
+        message: 'Сообщите нам об ошибке:',
+        input: '' +
+          '<input name="name" type="text" placeholder="Ваше Имя" required />' +
+          '<input name="email" type="text" placeholder="Ваш e-mail" required />' +
+          '<textarea name="message" placeholder="Ваше сообщение" rows="5" required maxlength="1500" style="color:#444444; resize:none"></textarea>' +
+        '',
+        buttons: [
+          $.extend({}, vex.dialog.buttons.YES, { text: 'Сообщить' }),
+          $.extend({}, vex.dialog.buttons.NO, { text: 'Отмена' })
+        ],
+        callback: function (data) {
+          var constroler = 'Controller/Contact_controller.php';
+          var name = data.name;
+          var email = data.email;
+          var message = data.message;
+          $.post(constroler, {
+            'name': name,
+            'email': email,
+            'message': message
+          });
+        }
+      });
+    });
+  </script>
     <!-- AddThis Follow BEGIN -->
     <div class="addthis_toolbox addthis_default_style">
-      <span style="float: left; font-size: 10pt;">Мы в соц. сетях:&nbsp;</span>
+      <span style="float: left; font-size: 10pt; font-style: italic;">Мы в соц. сетях:&nbsp;</span>
       <a class="addthis_button_facebook_follow" addthis:userid="CR"></a>
       <a class="addthis_button_twitter_follow" addthis:userid="CR"></a>
       <a class="addthis_button_google_follow" addthis:userid="CR"></a>
@@ -116,18 +117,12 @@
     </div>
     <div id="feedFormSettings" style="vertical-align: middle;">
         показывать
-        <select id="category">
-         <option value="0">все</option>
-        <option value="1">кражи</option>
-        <option value="2">убийства</option>
-        <option value="3">вымогательства</option>
-        <option value="4">автоугоны</option>
-        <option value="5">изнасилования</option>
-        </select>
-          <br>
-      <div class="settings_container" style="float: left; border-bottom: 3px solid; border-color: #696969;">Последние</div>
-      <div class="settings_container" style="float: right;">Добавленные</div>
-      
+        <input type="checkbox" id="checkbox1" onChange="func('checkbox1');" value="0" checked>все</option>
+        <input type="checkbox" id="checkbox2" onChange="func('checkbox2');" value="1">кражи</option>
+        <input type="checkbox" id="checkbox3" onChange="func('checkbox3');" value="2">убийства</option>
+        <input type="checkbox" id="checkbox4" onChange="func('checkbox4');" value="3">вымогательства</option>
+        <input type="checkbox" id="checkbox5" onChange="func('checkbox5');" value="4">автоугоны</option>
+        <input type="checkbox" id="checkbox6" onChange="func('checkbox6');" value="5">изнасилования</option>
     </div>
     <div id="feedForm">
       <!-- news go here -->
@@ -140,61 +135,7 @@
 
   <div id="map"></div>
   <div id="com_helper"></div>
-
   <script src="js/kraken_map.js"></script>
-  <script>
-
-  // Get references to the objects you need (<select> and <span>)
-  var category = document.getElementById('category');
-
-  // When the list value changes, set the innerHTML of the <span>
-  category.onchange = function() {
-    if (this.value != 0) {
-      var crime_url = "Controller/Crime_controller?category=" + this.value;
-      var crime = JSON.parse(httpGet(crime_url));
-      $('#feedForm').html('');
-      for (var i = 0; i < myMarkers.length; i++) {
-        map.removeLayer(myMarkers[i])
-      }
-      for (_i = crime.length - 1, _len = -1; _i > _len; --_i) {
-              i = crime[_i];
-              temp = i['time'].split(':');
-              i['time'] = temp[0] + ':' + temp[1];
-              i['date'] = moment(i['date'], "YYYY-MM-DD").fromNow();
-              var temp = i['description'];
-              temp = temp.split(' ');
-              i['category'] = convert_category(i['category']);
-              if (temp.length >= 3) {
-                  var popup_message = '<b>' + i['category'] + '</b><br />' + temp[0] + ' ' + temp[1] + ' ' + temp[2] + '<br />' + '<a onclick=comma("' + i['crime_id'] + '")>\u0427\u0438\u0442\u0430\u0442\u044c \u0434\u0430\u043b\u044c\u0448\u0435 \u2192</a>'
-              } else {
-                  var popup_message = '<b>' + i['category'] + '</b><br />' + temp[0] + '<br />' + '<a onclick=comma("' + i['crime_id'] + '")>\u0427\u0438\u0442\u0430\u0442\u044c \u0434\u0430\u043b\u044c\u0448\u0435 \u2192</a>'
-              }
-              marker = L.marker([
-                  i['latitude'],
-                  i['longitude']
-              ]).addTo(map).bindPopup(popup_message);
-              myMarkers.push(marker)
-              $('#feedForm').append(news(i));
-          }
-          $('.newsItem')
-          .mouseover(function(a) {
-              var crime_url = "Controller/Crime_controller?crime_id=" + a.toElement.id;
-              var crime = JSON.parse(httpGet(crime_url));
-              var redIcon = new LeafIcon({iconUrl: 'js/images/marker-red.png'});
-              tmpMarker = L.marker([crime[0].latitude, crime[0].longitude], {icon: redIcon}).addTo(map).bindPopup("I am a red leaf.");
-              map.setView(new L.LatLng(crime[0].latitude, crime[0].longitude), 13);
-          })
-          .mouseout(function() {
-              map.removeLayer(tmpMarker);
-          });        
-          $('.newsItem').click(function(a) {
-              comma(a.toElement.id);
-          });
-    } else {
-      update_news();
-    }
-  };
-
-  </script>
+  <script src="js/category"></script>
 </body>
 </html>
