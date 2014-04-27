@@ -42,6 +42,13 @@ body {
 	margin-left: -15px;
 }
 
+.contactWrapper {
+	z-index: 1;
+	position: absolute;
+	right: 250px;
+	top: 23px;
+}
+
 .addthis_default_style {
 	z-index: 1;
 	position: absolute;
