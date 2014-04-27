@@ -15,6 +15,10 @@
   <script src="bootstrap/bootstrap.min.js"></script>
   <script src="js/handlebars-v1.3.0.js"></script>
   <script src="js/moment.js"></script>
+  <script src="js/vex.combined.min.js"></script>
+  <script>vex.defaultOptions.className = 'vex-theme-flat-attack';</script>
+  <link rel="stylesheet" href="css/vex.css" />
+  <link rel="stylesheet" href="css/vex-theme-flat-attack.css" />
 </head>
 <body>
 
@@ -59,6 +63,38 @@
       <a href="http://212.112.98.181:22080/~ilia/kraken/"> <img src="images/city4.png" width="110px" height="auto"></a>
     </div>
     <div class="headerText">CrimeReport Bishkek</div>
+	<div class="contactWrapper">
+      
+      <input type="image" border='0' src='images/contact-us-button.png' name ='contact' width='172' height='25' id='contact'/>
+  
+	  </div>
+	  <script>
+		$('#contact').click(function(){
+			vex.dialog.open({
+				message: 'Сообщите нам об ошибке:',
+				input: '' +
+					'<input name="name" type="text" placeholder="Ваше Имя" required />' +
+					'<input name="email" type="text" placeholder="Ваш e-mail" required />' +
+					'<textarea name="message" placeholder="Ваше сообщение" rows="5" required style="color:#444444"></textarea>' +
+				'',
+				buttons: [
+					$.extend({}, vex.dialog.buttons.YES, { text: 'Сообщить' }),
+					$.extend({}, vex.dialog.buttons.NO, { text: 'Отмена' })
+				],
+				callback: function (data) {
+					var constroler = 'Controller/Contact_controller.php';
+					var name = data.name;
+					var email = data.email;
+					var message = data.message;
+					$.post(constroler, {
+						'name': name,
+						'email': email,
+						'message': message
+					});
+				}
+			});
+		});
+	</script>
     <!-- AddThis Follow BEGIN -->
     <div class="addthis_toolbox addthis_default_style">
       <span style="float: left; font-size: 10pt;">Мы в соц. сетях:&nbsp;</span>
