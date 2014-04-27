@@ -1,142 +1,100 @@
 <?php
+ 
+// My database Class called Database
 class Database {
  
-    private $host;
-    private $user;
-    private $pass;
-    private $name;
-    private $link;
-    private $error;
-    private $errno;
-    private $query;
+// our mysqli object instance
+public $mysqli = null;
  
-    function __construct($conn = 1) {
-        $this -> host = 'localhost';
-        $this -> user = 'ilya';
-        $this -> pass = 'database';
-        $this -> name = 'test';      
-        if ($conn == 1) $this -> connect();
+// Class constructor override
+public function __construct() {
+  
+include_once "dbconfig.php";        
+        
+$this->mysqli = 
+   new mysqli(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
+ 
+if ($this->mysqli->connect_errno) {
+    echo "Error MySQLi: ("&nbsp. $this->mysqli->connect_errno 
+    . ") " . $this->mysqli->connect_error;
+    exit();
+ }
+   $this->mysqli->set_charset("utf8"); 
+}
+ 
+// Class deconstructor override
+public function __destruct() {
+   $this->CloseDB();
+ }
+ 
+// runs a sql query
+    public function runQuery($qry) {
+        $result = $this->mysqli->query($qry);
+        return $result;
     }
  
-    function __destruct() {
-        @mysql_close($this->link);
+// runs multiple sql queres
+    public function runMultipleQueries($qry) {
+        $result = $this->mysqli->multi_query($qry);
+        return $result;
     }
  
-    public function connect() {
-        if ($this -> link = mysql_connect($this -> host, $this -> user, $this -> pass)) {
-            if (!empty($this -> name)) {
-                if (!mysql_select_db($this -> name)) $this -> exception("Could not connect to the database!");
-            }
-        } else {
-            $this -> exception("Could not create database connection!");
-        }
+// Close database connection
+    public function CloseDB() {
+        $this->mysqli->close();
     }
  
-    public function close() {
-        @mysql_close($this->link);
+// Escape the string get ready to insert or update
+    public function clearText($text) {
+        $text = trim($text);
+        return $this->mysqli->real_escape_string($text);
     }
  
-    public function query($sql) {
-        if ($this->query = @mysql_query($sql)) {
-            return $this->query;
-        } else {
-            $this->exception("Could not query database!");
-            return false;
-        }
+// Get the last insert id 
+    public function lastInsertID() {
+        return $this->mysqli->insert_id;
     }
+	
+// Fetch row from database
+public function fetch($sql) {
+	$result = $this -> runQuery($sql);
+	if(isset($result)) 
+	{
+	  $row = mysqli_fetch_array($result);
+	}
+	return $row;
+}
+
+// Fetch all data from database
+public function fetchAll($sql) {
+	$result = $this -> runQuery($sql);
+	if(isset($result)) 
+	{
+		$rows = array();
+		while($r = mysqli_fetch_array($result))
+		{
+			$rows[] = $r;
+		} 
+	}
+	return $rows;
+}
  
-    public function num_rows($qid) {
-        if (empty($qid)) {         
-            $this->exception("Could not get number of rows because no query id was supplied!");
-            return false;
-        } else {
-            return mysql_num_rows($qid);
-        }
-    }
- 
-    public function fetch_array($qid) {
-        if (empty($qid)) {
-            $this->exception("Could not fetch array because no query id was supplied!");
-            return false;
-        } else {
-            $data = mysql_fetch_array($qid);
-        }
-        return $data;
-    }
- 
-    public function fetch_array_assoc($qid) {
-        if (empty($qid)) {
-            $this->exception("Could not fetch array assoc because no query id was supplied!");
-            return false;
-        } else {
-            $data = mysql_fetch_array($qid, MYSQL_ASSOC);
-        }
-        return $data;
-    }
- 
-    public function fetch_all_array($sql, $assoc = true) {
-        $data = array();
-        if ($qid = $this->query($sql)) {
-            if ($assoc) {
-                while ($row = $this->fetch_array_assoc($qid)) {
-                    $data[] = $row;
-                }
-            } else {
-                while ($row = $this->fetch_array($qid)) {
-                    $data[] = $row;
-                }
-            }
-        } else {
-            return false;
-        }
-        return $data;
-    }
- 
-    public function last_id() {
-        if ($id = mysql_insert_id()) {
-            return $id;
-        } else {
-            return false;
-        }
-    }
- 
-    private function exception($message) {
-        if ($this->link) {
-            $this->error = mysql_error($this->link);
-            $this->errno = mysql_errno($this->link);
-        } else {
-            $this->error = mysql_error();
-            $this->errno = mysql_errno();
-        }
-        if (PHP_SAPI !== 'cli') {
-        ?>
- 
-            <div class="alert-bad">
-                <div>
-                    Database Error
-                </div>
-                <div>
-                    Message: <?php echo $message; ?>
-                </div>
-                <?php if (strlen($this->error) > 0): ?>
-                    <div>
-                        <?php echo $this->error; ?>
-                    </div>
-                <?php endif; ?>
-                <div>
-                    Script: <?php echo @$_SERVER['REQUEST_URI']; ?>
-                </div>
-                <?php if (strlen(@$_SERVER['HTTP_REFERER']) > 0): ?>
-                    <div>
-                        <?php echo @$_SERVER['HTTP_REFERER']; ?>
-                    </div>
-                <?php endif; ?>
-            </div>
-        <?php
-        } else {
-                    echo "MYSQL ERROR: " . ((isset($this->error) && !empty($this->error)) ? $this->error:'') . "\n";
-        };
-    }
+// Gets the total count and returns integer
+public function totalCount($fieldname, $tablename, $where = "") 
+{
+$q = "SELECT count(".$fieldname.") FROM "
+. $tablename . " " . $where;
+         
+$result = $this->mysqli->query($q);
+$count = 0;
+if ($result) {
+    while ($row = mysqli_fetch_array($result)) {
+    $count = $row[0];
+   }
+  }
+  return $count;
+}
  
 }
+ 
 ?>

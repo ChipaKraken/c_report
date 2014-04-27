@@ -38,26 +38,35 @@ class Crime {
 		$time = $this -> _time; 
         $police_report = $this -> police_report;
         $latitude = $this -> latitude;
-        $longitude = $this -> longitude;		
+        $longitude = $this -> longitude;	
+		$description = $this -> db ->clearText($description);
+		$category = $this -> db ->clearText($category);
+		$date = $this -> db ->clearText($date);	
+		$time = $this -> db ->clearText($time);
+		$police_report = $this -> db ->clearText($police_report);	
+		$latitude = $this -> db ->clearText($latitude);
+		$longitude = $this -> db ->clearText($longitude);
 		$q = "INSERT INTO crimes (description, category, date, time, police_report, latitude, longitude) VALUES ('$description', '$category', '$date', '$time', '$police_report', '$latitude', '$longitude')";
-		$this -> db -> query($q);	
+		$this -> db -> runQuery($q);	
 	}
 	
 	public function fetch() {
 		$q = "SELECT * FROM crimes";
-		$data = $this -> db ->fetch_all_array($q);
+		$data = $this -> db ->fetchAll($q);
 		print json_encode($data);	
 	}
 	
 	public function fetchById($id) {
+		$id = $this -> db ->clearText($id);
 		$q = "SELECT * FROM crimes WHERE crime_id = $id";
-        $data = $this -> db ->fetch_all_array($q);
+        $data = $this -> db ->fetchAll($q);
         print json_encode($data);
 	}
-	
+
 	public function fetchByCategory($category) {
+		$category = $this -> db ->clearText($category);
 		$q = "SELECT * FROM crimes WHERE category = $category;";
-		$data = $this -> db -> fetch_all_array($q);
+		$data = $this -> db -> fetchAll($q);
 		print json_encode($data);
 	}
 }

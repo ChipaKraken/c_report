@@ -28,15 +28,18 @@ class Comment {
         $crime_id = $this -> crime_id;
         $commentor_name = $this -> commentor_name;
         $comment = $this -> comment;
+		$crime_id = $this -> db ->clearText($crime_id);
+		$commentor_name = $this -> db ->clearText($commentor_name);
+		$comment = $this -> db ->clearText($comment);
         // $rating = $this -> rating;
         $q = "INSERT INTO comments (crime_id, commentor_name, comment) VALUES ('$crime_id', '$commentor_name', '$comment')";
-        $this -> db -> query($q);
+        $this -> db -> runQuery($q);
     }
 
     function getNewsComments($id) { 
-
+		$id = $this -> db ->clearText($id);
         $q = "SELECT * FROM comments WHERE crime_id = $id";
-        $data = $this -> db ->fetch_all_array($q);
+        $data = $this -> db ->fetchAll($q);
         print json_encode($data);
     }
 
