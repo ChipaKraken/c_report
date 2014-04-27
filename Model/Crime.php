@@ -63,9 +63,19 @@ class Crime {
         print json_encode($data);
 	}
 
-	public function fetchByCategory($category) {
-		$category = $this -> db ->clearText($category);
-		$q = "SELECT * FROM crimes WHERE category = $category;";
+	public function fetchByCategory($array) {
+		$q = "SELECT * FROM crimes WHERE ";
+		$i = 0;
+		$items = count($array) - 1;
+		foreach($array as $cell) {
+			$cell = $this -> db ->clearText($cell);
+			if ($i !== $items) {
+				$q .= "category = $cell OR "; 
+			} else if ($i === $items) {
+				$q .= "category = $cell;";
+			}
+			$i++;
+		}
 		$data = $this -> db -> fetchAll($q);
 		print json_encode($data);
 	}
