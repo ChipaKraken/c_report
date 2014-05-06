@@ -1,6 +1,6 @@
 <?php
 
-include("Database.php");
+include_once("Database.php");
 
 class Crime {
 	private $db;
@@ -53,14 +53,14 @@ class Crime {
 	public function fetch() {
 		$q = "SELECT * FROM crimes";
 		$data = $this -> db ->fetchAll($q);
-		print json_encode($data);	
+		$this -> db -> json_handler($data);		
 	}
 	
 	public function fetchById($id) {
 		$id = $this -> db ->clearText($id);
 		$q = "SELECT * FROM crimes WHERE crime_id = $id";
         $data = $this -> db ->fetchAll($q);
-        print json_encode($data);
+		$this -> db -> json_handler($data);
 	}
 
 	public function fetchByCategory($array) {
@@ -77,7 +77,7 @@ class Crime {
 			$i++;
 		}
 		$data = $this -> db -> fetchAll($q);
-		print json_encode($data);
+		$this -> db -> json_handler($data);
 	}
 }
 ?>

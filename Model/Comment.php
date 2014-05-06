@@ -1,6 +1,6 @@
 <?php
 
-include("Database.php");
+include_once("Database.php");
 
 class Comment {
     
@@ -40,7 +40,7 @@ class Comment {
 		$id = $this -> db ->clearText($id);
         $q = "SELECT * FROM comments WHERE crime_id = $id";
         $data = $this -> db ->fetchAll($q);
-        print json_encode($data);
+        $this -> db -> json_handler($data);
     }
 
     // function changeRating($id, $value) {

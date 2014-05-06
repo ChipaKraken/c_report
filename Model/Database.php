@@ -19,7 +19,7 @@ if ($this->mysqli->connect_errno) {
     . ") " . $this->mysqli->connect_error;
     exit();
  }
-   $this->mysqli->set_charset("utf8"); 
+   //$this->mysqli->set_charset("utf8"); 
 }
  
 // Class deconstructor override
@@ -54,16 +54,6 @@ public function __destruct() {
     public function lastInsertID() {
         return $this->mysqli->insert_id;
     }
-	
-// Fetch row from database
-public function fetch($sql) {
-	$result = $this -> runQuery($sql);
-	if(isset($result)) 
-	{
-	  $row = mysqli_fetch_array($result);
-	}
-	return $row;
-}
 
 // Fetch all data from database
 public function fetchAll($sql) {
@@ -77,6 +67,35 @@ public function fetchAll($sql) {
 		} 
 	}
 	return $rows;
+}
+
+// JSON Encoder 
+public function json_handler($data)
+{
+	print json_encode($data);			
+	//Check json encode for errors	
+	if(json_last_error() != JSON_ERROR_NONE) {
+		switch (json_last_error()) {				
+			case JSON_ERROR_DEPTH:
+				echo ' - Maximum stack depth exceeded';
+			break;
+			case JSON_ERROR_STATE_MISMATCH:
+				echo ' - Underflow or the modes mismatch';
+			break;
+			case JSON_ERROR_CTRL_CHAR:
+				echo ' - Unexpected control character found';
+			break;
+			case JSON_ERROR_SYNTAX:
+				echo ' - Syntax error, malformed JSON';
+			break;
+			case JSON_ERROR_UTF8:
+				echo ' - Malformed UTF-8 characters, possibly incorrectly encoded';
+			break;
+			default:
+				echo ' - Unknown error';
+			break;
+		}
+	}
 }
  
 // Gets the total count and returns integer
