@@ -1,45 +1,22 @@
-function func(checkbox) {
+function func() {
+  //clear search field
+  document.getElementById('search_id').value="";
+  
+  //declaring variables
   var all_checkbox = document.getElementById("checkbox1");
-  _checkbox = document.getElementById(checkbox);
 
-  if (checkbox == "checkbox1") {
-    if (_checkbox.checked == false) {
-      for (var i = 2; i <= 6; ++i) {
-        document.getElementById("checkbox" + i.toString()).checked = true;
-      } 
-    } else {
-      for (var i = 2; i <= 6; ++i) {
-        var temp = document.getElementById("checkbox" + i.toString());  
-        temp.checked = false;
-      }
-    }
-  } else {
-    if (_checkbox.checked == false) {
-      var counter = 0;
-      for (var i = 2; i <= 6; ++i) {
-        if (document.getElementById("checkbox" + i.toString()).checked == true) {
-          counter++;
-        }
-      }
-      if (counter == 0) {
-        all_checkbox.checked = true;
-      }
-    } else {
-      all_checkbox.checked = false;
-    }
-  } 
-  // Now check what checkboxes are checked and build GET REQUEST
+  // Now check what checkboxes are selected and build GET REQUEST
 
-  if (all_checkbox.checked == true) {
-    //just call method update_news
+  if (all_checkbox.selected == true) {
+    //just call method update_news if we chose "all" category
     update_news();
   } else {
     //otherwise build get request
     var crime_url = "Controller/Crime_controller?category=";
     var counter = 0;
-    var loop_checker = 0;
-    for (var i = 2; i <= 6; ++i) {
-      if (document.getElementById("checkbox" + i.toString()).checked == true) {
+    var loop_checker = 0; //loop checker is needed to build properly get request (check if comma is needed)
+    for (var i = 2; i <= 8; ++i) {
+      if (document.getElementById("checkbox" + i.toString()).selected == true) {
         if (loop_checker == 0) {
           i--;
           crime_url += i; 
@@ -52,11 +29,17 @@ function func(checkbox) {
         }
       }
     }
+    //getting data after get request
     var crime = JSON.parse(httpGet(crime_url));
+    
+    //clear newsfeed
     $('#feedForm').html('');
+    
+    //clear map
     for (var i = 0; i < myMarkers.length; i++) {
       map.removeLayer(myMarkers[i])
     }
+    //appending newsfeed and map
     for (_i = crime.length - 1, _len = -1; _i > _len; --_i) {
             i = crime[_i];
             temp = i['time'].split(':');
@@ -77,6 +60,7 @@ function func(checkbox) {
             myMarkers.push(marker)
             $('#feedForm').append(news(i));
         }
+        //mouse over function (getting another marker above)
         $('.newsItem')
         .mouseover(function(a) {
             var crime_url = "Controller/Crime_controller?crime_id=" + a.toElement.id;
