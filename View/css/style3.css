@@ -3,14 +3,12 @@ html {
 	width: 100%;
 }
 
-
 body {
 	height: 100%;
 	width: 100%;
 	background: #f3f2f3;
 	color: #000000;
 	margin:0px;
-	overflow: hidden;
 }
 
 #header {
@@ -21,17 +19,16 @@ body {
 	/*background: radial-gradient(circle at 1px 1px, #2d2d2d, #5f5f5f);*/
 	/*background: #266757;*/
 	background: #34353a;
-	color: #FFFFFF;	
-	min-height: 50px;
+	color: #FFFFFF;
 	height: 50px;
 	width: 100%;
 }
 
 .headerText {
 	font-family: 'Roboto', sans-serif;
-	font-weight: 300; 
+	font-weight: 300;	
+	font-size: 16pt; 
 	color: #FFFFFF;
-	font-size: 16pt;
 	padding-top: 20px;
 	margin-left: 100px;
 }
@@ -100,13 +97,12 @@ body {
 #feed {
 	/*border-right: 2px solid white;*/
 	z-index: 2;
-	position: absolute;
 	position: relative;
 	font-size: 10pt;
-	background: #f6f6f6;
-	min-width: 320px;
+	background: #FFFFFF;
+	min-width: 350px;
 	width: 25%;
-	height: 94%;
+	height: 90%;
 	float: left;
 	box-shadow: 0px 5px 10px black;
 }
@@ -114,9 +110,10 @@ body {
 	position: relative;
 	/*background: #2d2d2d;*/
 	width: auto;
-	height: 10%;
+	height: 50px;
 	min-height: 60px;
-}
+} 
+
 .submitButton {
 	font-family: 'Roboto', sans-serif;
 	font-weight: 300; 
@@ -125,7 +122,6 @@ body {
 	border: 0px;
 	width: 100%;
 	height: 100%;
-	min-height: 60px;
 	font-size: 16pt;
 	border-bottom: 1px solid;
 	border-color: #dedede;
@@ -133,7 +129,7 @@ body {
 .submitButton:hover {
 	color: #000;
 	background: #f0f0f0;
-	border: 0px;
+	border-color: #f0f0f0;
 }
 .submitButton:active {
 	color: #FFF;
@@ -157,16 +153,18 @@ body {
 	font-family: 'Roboto', sans-serif;
 	font-weight: 400; 
 	font-size: 9pt;
-	/*color: #FFF;
-	background: #34353a;*/
 	color: #000;
 	background: #FFFFFF;
 	z-index: 1;
-	height: 40px;
-	border-bottom: 1px solid;
-	border-color: #dedede;
-	padding-left: 10px;
-	padding-right: 10px;
+	height: 60px;
+	box-shadow: 0px 3px 5px #dedede;
+	padding: 0px;
+}
+.content_container {
+	padding-top: 10px;
+	padding-left: 10%;
+	margin-left: auto;
+	margin-right: auto;
 }
 #feedForm {
 	font-family: 'Roboto', sans-serif;
@@ -174,7 +172,7 @@ body {
 	z-index: -1;
 	position: relative;
 	line-height: 150%;
-	height: 80%;
+	height: 70%;
 	overflow-y: scroll;
 	background: #FFFFFF;
 	/*border-right: 2px solid #7a7a7a;*/
@@ -183,22 +181,51 @@ body {
 #map {
 	background: #d2d0d2;
 	width: auto;
-	height: 94%;
+	height: 90%;
 }
 
-#footer {
-	position: absolute;
-	background: #2d2d2d;
-	text-align: center;
-	bottom: 0px;
-	left: 0px;
-	right: 0px;
-	height: 30px;
-}
+
 #searchWrapper {
 	box-shadow: -1px -1px 1px black;
-	background: #FFF;
-	height: 5%;
+	background: #ffffff;
+	height: 35px;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 2px;
+	padding-bottom: 4px;
+}
+.searchImage {
+	width: 5%;
+	margin-right: 5px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.searchbox:focus {
+	outline: 0;
+	border: 1px solid;
+	border-color: #b2b2b2;
+}
+
+.searchbox:active {
+	border: 1px solid;
+	border-color: #ababab;	
+}
+.searchbox {
+	background: url(../images/search-icon.png);
+	background-repeat: no-repeat;
+	background-size: 15px 15px;
+	background-position: 4px 3px;	
+	padding-left: 24px;
+	vertical-align: middle;
+	position: relative;
+	top: 2px;
+	width: 100%;
+	border: 1px solid;
+	border-color: #dedede;
 }
 .textbox { 
 	position: relative;
@@ -275,29 +302,6 @@ h3 {
 	cursor: pointer;
 }
 
-.newsItem:hover {
-	padding-bottom: 5px;
-	padding-left: 15px;
-	padding-right: 15px;
-	border-bottom: 2px solid;
-   	border-bottom-width:1px;
-   	border-bottom-color: #c1c1c1;
-	color: #000;
-	background: #d8d8d8;
-	cursor: pointer;
-}
-.newsItem:active {
-	padding-bottom: 5px;
-	padding-left: 15px;
-	padding-right: 15px;
-	border-bottom: 2px solid;
-   	border-bottom-width:1px;
-   	border-bottom-color: #ffa200;
-	color: #FFF;
-	background: #ffa200;
-	cursor: pointer;
-}
-
 .titleContainer {
 	font-family: 'Roboto', sans-serif;
 	font-weight: 400; 
@@ -332,14 +336,16 @@ h3 {
 	padding-right:10px;
 	padding-left:10px;
 	
+	margin-top: 10px;
 	margin-left: 50px;
 	font-family: 'Roboto', sans-serif;
 	font-weight: 300; 
-	color: #000;
+	color: #FFFFFF;
 	background: #ffa200; 
 	font-size: 11pt;
 	border: 0px;
 }
+
 .submitFormButton:focus {
 	outline:0;	
 }
@@ -349,6 +355,7 @@ h3 {
 	padding-right:10px;
 	padding-left:10px;
 	
+	margin-top: 10px;
 	margin-left: 20%;
 	font-family: 'Roboto', sans-serif;
 	font-weight: 300; 
@@ -360,7 +367,47 @@ h3 {
 .submitFormCancelButton:focus {
 	outline:0;	
 }
-.textarea { 
+.submitFormActive {
+
+	border-bottom: 1px solid;
+	border-color: #696969;
+	padding-bottom: 20px;
+}
+.form_input { 
+	margin-left: 5%;
+	margin-right: 5%;
+	width: 90%;
+}
+.police_input {
+	width: 50px;
 	margin-left: 10px;
+}
+.text_area { 
+	margin-left: 5%;
+	margin-right: 5%;
+	width: 90%;
+	resize: none;
+}
+
+.warning {
+	text-align: center;
+	font-family: 'Robot', sans-serif;
+	font-size: 10pt;
+	font-weight: 300;
+}
+.date_time {
+	width: 35%;
+	min-width: 120px;
+	display: inline-block;
+	margin-top: 5px;
+	height: 80px;
+	margin-bottom: -10px;
+}
+
+label {
+	font-family: 'Roboto', sans-serif;
+	font-size: 10pt;
+	font-weight: 400;
+	margin-left: 6%;
 }
 
