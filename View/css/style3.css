@@ -11,6 +11,18 @@ body {
 	margin:0px;
 }
 
+a.menulink{
+  color: #b2b2b2 ;
+  text-decoration: none;
+}
+
+
+a.menulink:hover {
+  color: #ffffff ;
+  text-decoration: none;
+}
+
+
 #header {
 	z-index: 2;
 	float: top;
@@ -25,26 +37,39 @@ body {
 }
 
 .headerText {
-	font-family: 'Roboto', sans-serif;
-	font-weight: 300;	
-	font-size: 16pt; 
+	float:left;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 500;	
+	font-size: 22pt; 
 	color: #FFFFFF;
-	padding-top: 20px;
-	margin-left: 100px;
+	padding-top: 3px;
+	margin-left: 40px;
 }
+
+.headerText2 {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: lighter;	
+	font-size: 22pt; 
+	color: #FFFFFF;
+	padding-top: 3px;
+	margin-left: 12px;
+}
+
 .headerImage {
 	float: left;
 	position: absolute;
-	margin-top: 10px;
-	margin-left: -15px;
+	margin-top: 5px;
+	margin-left: 10px;
 }
 
 .contactWrapper {
-	z-index: 1;
+	float: right;
 	position: absolute;
-	right: 250px;
+	right: 200px;
 	top: 23px;
 }
+
+
 
 .addthis_default_style {
 	z-index: 1;
@@ -53,6 +78,27 @@ body {
 	top: 28px;
 	font-size: 8pt;
 }
+
+.more {
+	position: absolute;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: lighter;	
+	font-size: 16pt; 
+	color: #b2b2b2;
+	right: 220px;
+	top: 10px;
+}
+
+.about {
+	position: absolute;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: lighter;	
+	font-size: 16pt; 
+	color: #b2b2b2;
+	right: 280px;
+	top: 10px;
+}
+
 @-moz-keyframes blinker {  
     0% { opacity: 1.0; }
     50% { opacity: 0.0; }
@@ -148,6 +194,8 @@ body {
 .submitButton:focus {
 	outline:0;
 }
+
+
 
 #feedFormSettings {
 	font-family: 'Roboto', sans-serif;
