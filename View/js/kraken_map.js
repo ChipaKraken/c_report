@@ -11,9 +11,8 @@ var myMarkers = new Array;
 var tmpMarker;
 var LeafIcon = L.Icon.extend({
                 options: {
-                    shadowUrl: 'js/images/marker-shadow.png',
                     iconAnchor:   [12, 41],
-                    popupAnchor:  [-3, -76]
+                    popupAnchor:  [1, -35]
                 }
             });
 popup = L.popup();
@@ -107,20 +106,34 @@ function update_news() {
 	        ]).addTo(map).bindPopup(popup_message);
 	        myMarkers.push(marker)
 	        $('#feedForm').append(news(i));
-		}
-        $('.newsItem')
-        .mouseover(function(a) {
+		}		
+        // $('.newsItem')
+        // .mouseover(function(a) {
+            // var crime_url = "Controller/Crime_controller?crime_id=" + a.toElement.id;
+            // var crime = JSON.parse(httpGet(crime_url));
+            // var redIcon = new LeafIcon({iconUrl: 'js/images/marker-red.png'});
+            // tmpMarker = L.marker([crime[0].latitude, crime[0].longitude], {icon: redIcon}).addTo(map).bindPopup("I am a red leaf.");
+            // map.setView(new L.LatLng(crime[0].latitude, crime[0].longitude), 13);
+        // })
+        // .mouseout(function() {
+            // map.removeLayer(tmpMarker);
+        // });        
+        $('.newsItem').click(function(a) {
             var crime_url = "Controller/Crime_controller?crime_id=" + a.toElement.id;
             var crime = JSON.parse(httpGet(crime_url));
-            var redIcon = new LeafIcon({iconUrl: 'js/images/marker-red.png'});
-            tmpMarker = L.marker([crime[0].latitude, crime[0].longitude], {icon: redIcon}).addTo(map).bindPopup("I am a red leaf.");
+            var icon_blue = new LeafIcon({iconUrl: 'js/images/marker-icon.png'});
+			var cat_pop = convert_category(crime[0].category);
+			var mess_pop = crime[0].description;
+			mess_pop = mess_pop.split(' ');
+            if (mess_pop.length >= 3) {
+                var popup_message = '<b>' + cat_pop + '</b><br />' + mess_pop[0] + ' ' + mess_pop[1] + ' ' + mess_pop[2]  + '</div>' + '<br />' + '<a onclick=comma("' + crime[0].crime_id + '") style="cursor: pointer;">\u0427\u0438\u0442\u0430\u0442\u044c \u0434\u0430\u043b\u044c\u0448\u0435 \u2192</a>'
+            } else {
+                var popup_message = '<b>' + cat_pop + '</b><br />' + mess_pop[0] + '<br />' + '<a onclick=comma("' + crime[0].crime_id + '") style="cursor: pointer;">\u0427\u0438\u0442\u0430\u0442\u044c \u0434\u0430\u043b\u044c\u0448\u0435 \u2192</a>'
+            }
+            tmpMarker = L.marker([crime[0].latitude, crime[0].longitude], {icon: icon_blue}).addTo(map).bindPopup(popup_message);
+			tmpMarker.openPopup();
             map.setView(new L.LatLng(crime[0].latitude, crime[0].longitude), 13);
-        })
-        .mouseout(function() {
-            map.removeLayer(tmpMarker);
-        });  
-		$('.newsItem').click(function(a) {
-		comma(a.toElement.id)});
+        });
 	});
 }
 update_news();
